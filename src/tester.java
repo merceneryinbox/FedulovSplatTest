@@ -10,9 +10,9 @@ import java.nio.file.Path;
 public class tester {
     public static void main(String[] args) {
         for (Path t :
-                new NioFolderObserver(FileSystems.getDefault().getPath("d:\\")).getFSElementsOnLevelDownOnDemand()) {
+                new NioFolderObserver(FileSystems.getDefault().getPath("d:\\")).getpathList()) {
             if (Files.isDirectory(t)){
-                new NioFolderObserver(t).getFSElementsOnLevelDownOnDemand();
+                new NioFolderObserver(t).getpathList();
                 System.out.println("----------------------------------------------");
             }
         }

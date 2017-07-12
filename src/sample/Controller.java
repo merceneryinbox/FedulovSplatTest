@@ -1,27 +1,23 @@
 package sample;
 
-import filebrowsertools.NioFolderObserver;
+import filebrowsertools.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Controller {
 
@@ -43,62 +39,21 @@ public class Controller {
 
 
     private List<Path> pathsOnDemandList;
-    private List<TreeItem> itemsListByPaths;
-    private String nameOfStartPath;
-    private Path startPath;
+    private String nameOfStartPath = "d://";
+    private Path startPathInControl;
+    private List<MyTreeItem> itemsListByPaths;
 
-    private FileSystem fs;
 
     // Start Controller Initialization block
     public void initialize() {
-        ImageView iconOpenFolder;// = new ImageView("folder-open_16.ico");
-        String imagePath = "book_open.ico";
-        Image img = new Image(imagePath);
-        iconOpenFolder = new ImageView(img);
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
-        // Initialize start path
-        nameOfStartPath = "d:\\";
-        // Initialize contain in chosen TreeItem paths
-        pathsOnDemandList = new ArrayList<>();
-        // Initialize TreeItem List with value of paths
-        itemsListByPaths = new ArrayList<>();
+        startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
+        // Init root TreeItem to witch others were set
+        MyTreeItem<Path, Node, Boolean> rootItem = new MyTreeItem<Path, Node, Boolean>(startPathInControl, false);
+        // getting itemsList in start directory
+        itemsListByPaths = new ItemListPopulator(startPathInControl).populateTreeItemListForController();
 
-        // getting filesystem
-        fs = FileSystems.getDefault();
-        // getting start path from chosen filesysytem
-        startPath = fs.getPath(nameOfStartPath);
-        // getting an Object to further internal reading its contains
-        NioFolderObserver nfo = new NioFolderObserver(startPath);
-        // getting fs elements(Path) List to populate TreeItems
-        pathsOnDemandList = nfo.getFSElementsOnLevelDownOnDemand();
-
-        // Init root TreeItem to witch others Items were set
-        TreeItem<Path> rootItem = new TreeItem<Path>(startPath, iconOpenFolder);
-        rootItem.getGraphic().setVisible(true);
-
-        // populate itemsList to fulfil tree TreeItems <Path> List in loop (Old Style)
-//        for (Path p :
-//                pathsOnDemandList) {
-//            if (Files.isDirectory(p)) {
-//                itemsListByPaths.add(new TreeItem<>(p));
-//
-//            }
-//        }
-        //  populate itemsList to fulfil tree(lambda + stream expression JDK8 style)
-        itemsListByPaths = pathsOnDemandList.stream().filter(p -> p.toFile().isDirectory()).map(TreeItem::new).collect(Collectors.toList());
-        // fulfil TreeItems in loop
-        for (TreeItem ti :
-                itemsListByPaths) {
-            ti.getGraphic();
-            rootItem.getChildren().add(ti);
-        }
+        // fulfil TreeItems by icons
+        itemsListByPaths = new FullFilItemsByIcoes(itemsListByPaths).filling();
         // set root TreeItem
         tvLeft.setRoot(rootItem);
         // describe behavior of selected TreeItem in  TreeView and behavior of ListView if TreeItem is Selected
@@ -110,12 +65,12 @@ public class Controller {
                 forSubItems.setGraphic(iconClosedFolder);
                 forSubItems.getGraphic().setVisible(true);
                 List<TreeItem<Path>> subItems = new ArrayList<>();
-                List<Path> pathinTable = new NioFolderObserver((forSubItems).getValue()).getFSElementsOnLevelDownOnDemand();
+                List<Path> pathinTable = new NioFolderObserver((forSubItems).getValue()).getpathList();
                 // find if selected TreeItem consists of subdirs or filesthen populate this selected Item in treeView
                 if (Files.isDirectory(forSubItems.getValue())) {
                     for (Path subP :
                             pathinTable) {
-                        TreeItem<Path> tempI = new TreeItem<>(subP,iconClosedFolder);
+                        TreeItem<Path> tempI = new TreeItem<>(subP, iconClosedFolder);
                         tempI.getGraphic().setVisible(true);
                         forSubItems.getChildren().add(tempI);
                         subItems.add(tempI);

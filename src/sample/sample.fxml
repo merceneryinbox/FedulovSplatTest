@@ -29,7 +29,7 @@
                           <columns>
                             <TableColumn fx:id="tableViewName" editable="false" maxWidth="400.0" minWidth="180.0" prefWidth="200.0" text="File Name" />
                               <TableColumn fx:id="tableViewSize" editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="70.0" text="Size kB" />
-                              <TableColumn fx:id="tableViewDate" editable="false" maxWidth="150.0" minWidth="115.0" prefWidth="115.0" text="Last modified" />
+                              <TableColumn fx:id="tableViewDate" editable="false" maxWidth="150.0" minWidth="115.0" prefWidth="150.0" text="Last modified" />
                           </columns>
                         </TableView>
                      </children>

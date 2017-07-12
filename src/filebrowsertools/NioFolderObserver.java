@@ -20,7 +20,7 @@ public class NioFolderObserver {
     /**
      * The NioFO Constructor injects by Path variable to invoke MyDirectoryWalk(Path) extended SimpleFileVisitor<Path>
      * and get back SimpleFileVisitor myDirVisitor witch store data for iterate fs elements in it
-     * and return saved List of elements(Path type) to caller from getFSElementsOnLevelDownOnDemand() method
+     * and return saved List of elements(Path type) to caller from getpathList() method
      * @param path
      */
     public NioFolderObserver(Path path) {
@@ -30,10 +30,15 @@ public class NioFolderObserver {
         myDirVisitor = new MyDirectoryWalk(path);
     }
 
-    public List<Path> getFSElementsOnLevelDownOnDemand() {
+    public List<Path> getpathList() {
 
         try {
-            Files.list(path).forEach(pa -> pathList.add(pa));
+            Files.list(path).forEach(new Consumer<Path>() {
+                @Override
+                public void accept(Path pa) {
+                    pathList.add(pa);
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
