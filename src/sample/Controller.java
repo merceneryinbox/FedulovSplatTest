@@ -10,6 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.nio.file.FileSystem;
@@ -49,7 +51,18 @@ public class Controller {
 
     // Start Controller Initialization block
     public void initialize() {
-
+        ImageView iconOpenFolder;// = new ImageView("folder-open_16.ico");
+        String imagePath = "book_open.ico";
+        Image img = new Image(imagePath);
+        iconOpenFolder = new ImageView(img);
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
+//        ImageView iconOpenFolder = new ImageView("folder-open_16.ico");
         // Initialize start path
         nameOfStartPath = "d:\\";
         // Initialize contain in chosen TreeItem paths
@@ -65,8 +78,10 @@ public class Controller {
         NioFolderObserver nfo = new NioFolderObserver(startPath);
         // getting fs elements(Path) List to populate TreeItems
         pathsOnDemandList = nfo.getFSElementsOnLevelDownOnDemand();
+
         // Init root TreeItem to witch others Items were set
-        TreeItem<Path> rootItem = new TreeItem<>(startPath);
+        TreeItem<Path> rootItem = new TreeItem<Path>(startPath, iconOpenFolder);
+        rootItem.getGraphic().setVisible(true);
 
         // populate itemsList to fulfil tree TreeItems <Path> List in loop (Old Style)
 //        for (Path p :
@@ -81,6 +96,7 @@ public class Controller {
         // fulfil TreeItems in loop
         for (TreeItem ti :
                 itemsListByPaths) {
+            ti.getGraphic();
             rootItem.getChildren().add(ti);
         }
         // set root TreeItem
@@ -91,17 +107,23 @@ public class Controller {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 // getting List of elements in selected TreeItem
                 TreeItem<Path> forSubItems = (TreeItem<Path>) newValue;
+                forSubItems.setGraphic(iconClosedFolder);
+                forSubItems.getGraphic().setVisible(true);
+                List<TreeItem<Path>> subItems = new ArrayList<>();
                 List<Path> pathinTable = new NioFolderObserver((forSubItems).getValue()).getFSElementsOnLevelDownOnDemand();
-                // setting all element to the root TreeItem
+                // find if selected TreeItem consists of subdirs or filesthen populate this selected Item in treeView
                 if (Files.isDirectory(forSubItems.getValue())) {
-                    List<Path> subPathList  = new NioFolderObserver((forSubItems).getValue()).getFSElementsOnLevelDownOnDemand();
                     for (Path subP :
-                            subPathList) {
-                        forSubItems.getChildren().add(new TreeItem<>(subP));
+                            pathinTable) {
+                        TreeItem<Path> tempI = new TreeItem<>(subP,iconClosedFolder);
+                        tempI.getGraphic().setVisible(true);
+                        forSubItems.getChildren().add(tempI);
+                        subItems.add(tempI);
                     }
                 }
+
                 tableView.setItems(FXCollections.observableArrayList(pathinTable));
-                // refreshing TreeView
+                // refreshing tableView
                 tableView.refresh();
             }
         });
