@@ -3,40 +3,50 @@ package filebrowsertools;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by mercenery on 13.07.2017.
  */
 public class FullFilItemsByIcoes {
-    private String imagePathOpenF = "folder-open_16.ico";
-    private String imagePathCloseF = "folder-close_16.ico";
-
-    private ImageView iconClosedFolder;
-    private ImageView iconOpenFolder;
+    private String imagePathCloseF = "folder_new.png";
+    private String imagePathOpenF = "folder_new.png";
 
     private Image imgOpF = new Image(imagePathOpenF);
+    private ImageView iconOpenFolder;
+    private ImageView iconClosedFolder;
     private Image imgCloF = new Image(imagePathCloseF);
+
+    private MyTreeItem treeItem;
 
     private List<MyTreeItem> incomeList;
     private List<MyTreeItem> outcomeList;
 
-
-    public FullFilItemsByIcoes(List list) {
-
-        iconClosedFolder = new ImageView(imgCloF);
-        iconOpenFolder = new ImageView(imgOpF);
-
-        incomeList = list;
+    public FullFilItemsByIcoes(MyTreeItem treeItem) {
+        this.treeItem = treeItem;
     }
 
-    public List<MyTreeItem> filling(){
+    public FullFilItemsByIcoes(List list) {
+        iconClosedFolder = new ImageView(imgCloF);
+        incomeList = list;
+        outcomeList = new ArrayList<>();
+    }
+
+    public List<MyTreeItem> fillingClosedDir() {
         for (MyTreeItem it :
                 incomeList) {
-            it.setGraphic(iconClosedFolder);
+            if (Files.isDirectory(it.getPath())) {
+                it.setGraphic(iconClosedFolder);
+                outcomeList.add(it);
+            } else if (Files.isRegularFile(it.getPath())) {
+                it.setGraphic(iconClosedFolder);
+            }
             outcomeList.add(it);
         }
         return outcomeList;
     }
 
+//    public
 }
