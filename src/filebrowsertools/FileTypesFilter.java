@@ -46,7 +46,9 @@ public class FileTypesFilter {
         } else if (isMultimedia) {
             resultType = "multimedia";
         } else if (isOthers) {
-            resultType = "other";
+            resultType = "others";
+        } else {
+            resultType = "others";
         }
         return resultType;
     }

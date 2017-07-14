@@ -5,18 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
-
-    @FXML
-    private TreeView tvLeft;
-    @FXML
-    private Pane ancPaneLeft;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -25,6 +18,8 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setAlwaysOnTop(true);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

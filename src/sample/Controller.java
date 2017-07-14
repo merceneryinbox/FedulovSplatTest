@@ -5,8 +5,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
@@ -37,6 +39,9 @@ public class Controller {
 
     @FXML
     TableColumn<Path, String> tableViewDate;
+
+    @FXML
+    MenuItem mnNew;
 
 
     private List<Path> pathsOnDemandList;
@@ -69,7 +74,7 @@ public class Controller {
         itemsListByPaths = new ItemListPopulator(startPathInControl).populateTreeItemListForController();
 
         // fulfil TreeItems by icons
-        itemsListByPaths = new FullFilListItemsByIcoes(itemsListByPaths).fillingListOfClosedDir();
+        itemsListByPaths = new FulFilListItemsIcoByTypes(itemsListByPaths).fillingListOfMyTreeItems();
 
         // set all subitems on root
         rootItem.getChildren().addAll(itemsListByPaths);
@@ -81,23 +86,31 @@ public class Controller {
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                // getting List of elements in selected MyTreeItem
+
+                // getting List of elements in selected MyTreeItem if it consists of
                 MyTreeItem subItem = (MyTreeItem) newValue;
+
                 // but only if it is directory< not file
-                if (Files.isDirectory(subItem.getPath())) {
+                if (Files.isDirectory(subItem.getPath())&&(!subItem.isYetVisited())) {
                     subItem.setGraphic(iconOpenFolder);
+
                     // init subItems list from selected Path
                     List<MyTreeItem> subItemsList = new ArrayList<>();
-                    // getting list of Paths in selected directory
-                    List<Path> pathListInListener = new NioFolderObserver((Path) subItem.getValue()).getpathList();
+
+                    // getting list of Paths in selected directory of MyTreeItem
+                    List<Path> pathListOfMyTreeItemsInListener = new NioFolderObserver(subItem.getPath()).getpathList();
+
                     // walking tree of paths in selected directory
                     for (Path subP :
-                            pathListInListener) {
-                        MyTreeItem tmpIinSub = new MyTreeItem(subP, iconClosedFolder, false);
+                            pathListOfMyTreeItemsInListener) {
+
+                        // creating MyTreeItem with taken Path and default other properties
+                        MyTreeItem tmpIinSub = new MyTreeItem(subP);
+                        tmpIinSub = new FulFillOneItemIcoByType(subItem).filInTheIcon();
                         subItemsList.add(tmpIinSub);
                     }
                     subItem.getChildren().addAll(subItemsList);
-                    tableView.setItems(FXCollections.observableArrayList(pathListInListener));
+                    tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
                     // refreshing tableView
                     tableView.refresh();
                 }
@@ -124,5 +137,25 @@ public class Controller {
                 return new SimpleStringProperty(String.valueOf(new SimpleDateFormat("dd.MM.yyyy  hh:mm:ss").format(c.getValue().toFile().lastModified())));
             }
         });
+    }
+
+    public void makeFolder(ActionEvent actionEvent) {
+
+    }
+
+    public void openFolder(ActionEvent actionEvent) {
+
+    }
+
+    public void closeWindow(ActionEvent actionEvent) {
+
+    }
+
+    public void deleteFile(ActionEvent actionEvent) {
+
+    }
+
+    public void showAbout(ActionEvent actionEvent) {
+
     }
 }
