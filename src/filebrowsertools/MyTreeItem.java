@@ -12,7 +12,7 @@ public class MyTreeItem<P, N, B> extends TreeItem {
     private Path path;
     private boolean yetVisited = false;
 
-    public MyTreeItem(Object value) {
+    public MyTreeItem(Path value) {
         super(value);
     }
 
@@ -24,15 +24,14 @@ public class MyTreeItem<P, N, B> extends TreeItem {
         this.path = path;
     }
 
-    public MyTreeItem(Object value, Node graphic, boolean yetVisited) {
+    public MyTreeItem(Path value, Node graphic, Boolean yetVisited) {
         super(value, graphic);
-        path = (Path) value;
-
+        this.path = value;
         this.yetVisited = yetVisited;
     }
 
-    public MyTreeItem(Object object, Boolean yetVisited) {
-        super (object);
+    public MyTreeItem(Path value, Boolean yetVisited) {
+        super(value);
         this.yetVisited = yetVisited;
     }
 

@@ -69,7 +69,7 @@ public class Controller {
         itemsListByPaths = new ItemListPopulator(startPathInControl).populateTreeItemListForController();
 
         // fulfil TreeItems by icons
-        itemsListByPaths = new FullFilItemsByIcoes(itemsListByPaths).fillingClosedDir();
+        itemsListByPaths = new FullFilListItemsByIcoes(itemsListByPaths).fillingListOfClosedDir();
 
         // set all subitems on root
         rootItem.getChildren().addAll(itemsListByPaths);
