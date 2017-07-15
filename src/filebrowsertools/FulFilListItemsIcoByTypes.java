@@ -8,7 +8,6 @@ import java.util.List;
  * Created by mercenery on 13.07.2017.
  */
 public class FulFilListItemsIcoByTypes {
-    private MyTreeItem treeItem;
 
     private List<MyTreeItem> incomeList;
     private List<MyTreeItem> outcomeList;
@@ -34,7 +33,7 @@ public class FulFilListItemsIcoByTypes {
     public List<MyTreeItem> fillingListOfMyTreeItems() {
         for (MyTreeItem it :
                 incomeList) {
-            outcomeList.add(new FulFillOneItemIcoByType(it).filInTheIcon());
+            outcomeList.add(new FulFillIcoByType(it).filInTheIconInMyTreeItem());
         }
         // returning fulfilled list back
         return outcomeList;

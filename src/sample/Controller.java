@@ -70,39 +70,30 @@ public class Controller {
 
                 // getting List of elements in selected MyTreeItem if it consists of
                 MyTreeItem subItem = (MyTreeItem) newValue;
+                Path p = (Path) subItem.getValue();
                 subItem.setYetVisited(true);
-                subItem = new FulFillOneItemIcoByType(subItem).filInTheIcon();
+                subItem = new FulFillIcoByType(subItem).filInTheIconInMyTreeItem();
                 List<MyTreeItem> subItemsList = new ArrayList<>();
                 List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
 
-                if (Files.isDirectory(subItem.getPath())) {
+                if (Files.isDirectory(p)) {
 
                     // getting list of Paths in selected directory of MyTreeItem
-                    pathListOfMyTreeItemsInListener = new NioFolderObserver(subItem.getPath()).getSubPathsList();
+                    pathListOfMyTreeItemsInListener = new NioFolderObserver(p).getSubPathsList();
 
-                    // walking list of paths in selected directory and creating sub MyTreeItems
-                    for (Path subP :
-                            pathListOfMyTreeItemsInListener) {
-
-                        // creating MyTreeItem with taken Path and default other properties
-                        MyTreeItem tmpIinSub = new MyTreeItem(subP);
-
-                        // assign icon to list of MyTreeItems in subfolders
-                        tmpIinSub = new FulFillOneItemIcoByType(subItem).filInTheIcon();
-
-                        // add each handled MyTreeItem to list of MyTreeItems
-                        subItemsList.add(tmpIinSub);
-                    }
+                    // Getting list of handled MyTreeItems
+                    subItemsList = new FulFilListItemsIcoByTypes(subItemsList).fillingListOfMyTreeItems();
 
                     // recursive setting list of MyTreeItems to root Item
                     subItem.getChildren().addAll(subItemsList);
+
                     // setting sub MyTreeItems in selected parent MyTreeItem onto right TableView
                     tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
 
                     // refreshing tableView
                     tableView.refresh();
                 }
-                pathListOfMyTreeItemsInListener.add(subItem.getPath());
+                pathListOfMyTreeItemsInListener.add(((Path) subItem.getValue()));
                 tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
 
                 // refreshing tableView

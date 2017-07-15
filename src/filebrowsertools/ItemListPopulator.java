@@ -34,7 +34,7 @@ public class ItemListPopulator {
             MyTreeItem mti = new MyTreeItem(p, false);
 
             // inject relevant icon into creating MyTreeItem
-            mti = new FulFillOneItemIcoByType(mti).filInTheIcon();
+            mti = new FulFillIcoByType(mti).filInTheIconInMyTreeItem();
             mti.setYetVisited(false);
             // adding handled MyTreeItem in MyTreeItem List
             itemsListByPaths.add(mti);

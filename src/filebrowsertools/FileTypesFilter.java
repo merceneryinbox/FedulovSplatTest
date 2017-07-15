@@ -1,9 +1,12 @@
 package filebrowsertools;
 
+import java.nio.file.Path;
+
 /**
  * Created by mercenery on 14.07.2017.
  */
 public class FileTypesFilter {
+    private Path path;
 
     private String fullFileName;
     private String resultType;
@@ -17,7 +20,11 @@ public class FileTypesFilter {
     private boolean isMultimedia = false;
     private boolean isOthers = false;
 
-
+    /**
+     * FileTypesFilter constructor take String name of Path to witch apply filter of types
+     *
+     * @param fullFileName
+     */
     public FileTypesFilter(String fullFileName) {
         this.fullFileName = fullFileName;
         isFolder = fullFileName.endsWith("/") || fullFileName.endsWith("");
@@ -30,6 +37,20 @@ public class FileTypesFilter {
         isOthers = (isFolder == false) && (isArchive == false) && (isExecutable == false) && (isOffice == false) && (isWeb == false) && (isPicture == false) && (isMultimedia == false);
     }
 
+    /**
+     * FileTypesFilter constructor Path to witch apply filter of types
+     * @param givenPath
+     */
+    public FileTypesFilter(Path givenPath) {
+        path = givenPath;
+        fullFileName = path.getFileName().toString();
+    }
+
+    /**
+     * Single method of FiletypesFilter witch is really handle the filename type, and return result in String answer -
+     * its tell what type of file by its filename
+     * @return
+     */
     public String filterFileByType() {
         if (isFolder) {
             resultType = "folder";
