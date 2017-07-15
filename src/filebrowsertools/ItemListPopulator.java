@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * ItemListPopulator catch Path , look up for subfolders in it and create MyTreeItems by injecting
+ * each element of MyTreeItems with value = Path and icon relevant by its extensions.
  * Created by mercenery on 13.07.2017.
  */
 public class ItemListPopulator {
@@ -17,23 +19,23 @@ public class ItemListPopulator {
         itemsListByPaths = new ArrayList<MyTreeItem>();
 
         // getting path List one level down
-        pathsOnDemandList = new NioFolderObserver(startPathInPopulator).getpathList();
+        pathsOnDemandList = new NioFolderObserver(startPathInPopulator).getSubPathsList();
     }
 
     /**
-     * Generate list of MyItems filled by icons and relevant Path method
-     *
+     * Filling elements in MyItems list by relevant icons
      * @return
      */
     public List<MyTreeItem> populateTreeItemList() {
         for (Path p :
                 pathsOnDemandList) {
+
             // inject value(Path) into MyTreeItem
             MyTreeItem mti = new MyTreeItem(p, false);
 
-            // assign icons to MyTreeItem
+            // inject relevant icon into creating MyTreeItem
             mti = new FulFillOneItemIcoByType(mti).filInTheIcon();
-
+            mti.setYetVisited(false);
             // adding handled MyTreeItem in MyTreeItem List
             itemsListByPaths.add(mti);
         }

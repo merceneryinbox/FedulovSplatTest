@@ -18,7 +18,7 @@ public class NioFolderObserver {
     /**
      * The NioFO Constructor injects by Path variable to invoke MyDirectoryWalk(Path) extended SimpleFileVisitor<Path>
      * and get back SimpleFileVisitor myDirVisitor witch store data for iterate fs elements in it
-     * and return saved List of elements(Path type) to caller from getpathList() method
+     * and return saved List of elements(Path type) to caller from getSubPathsList() method
      *
      * @param path
      */
@@ -28,7 +28,12 @@ public class NioFolderObserver {
         pathListRecursive = new ArrayList<>();
     }
 
-    public List<Path> getpathList() {
+    /**
+     * Getting list of files and folder in selected Path one level down
+     *
+     * @return
+     */
+    public List<Path> getSubPathsList() {
 
         try {
             Files.list(path).forEach(new Consumer<Path>() {
@@ -43,6 +48,11 @@ public class NioFolderObserver {
         return pathList;
     }
 
+    /**
+     * Recursive getting list of files and folder in selected Path and subpaths all available in selected hierarchy
+     *
+     * @return
+     */
     public List<Path> getFSElementsAllLevelsDownOnDemand() {
         try {
             Files.list(path).forEach(new Consumer<Path>() {

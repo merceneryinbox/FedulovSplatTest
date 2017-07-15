@@ -78,7 +78,7 @@ public class Controller {
                 if (Files.isDirectory(subItem.getPath())) {
 
                     // getting list of Paths in selected directory of MyTreeItem
-                    pathListOfMyTreeItemsInListener = new NioFolderObserver(subItem.getPath()).getpathList();
+                    pathListOfMyTreeItemsInListener = new NioFolderObserver(subItem.getPath()).getSubPathsList();
 
                     // walking list of paths in selected directory and creating sub MyTreeItems
                     for (Path subP :
