@@ -22,13 +22,14 @@ public class ItemListPopulator {
 
     /**
      * Generate list of MyItems filled by icons and relevant Path method
+     *
      * @return
      */
-    public List<MyTreeItem> populateTreeItemListForController() {
+    public List<MyTreeItem> populateTreeItemList() {
         for (Path p :
                 pathsOnDemandList) {
             // inject value(Path) into MyTreeItem
-            MyTreeItem mti = new MyTreeItem(p,false);
+            MyTreeItem mti = new MyTreeItem(p, false);
 
             // assign icons to MyTreeItem
             mti = new FulFillOneItemIcoByType(mti).filInTheIcon();

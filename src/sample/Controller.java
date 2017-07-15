@@ -48,17 +48,14 @@ public class Controller {
 
     // Start Controller Initialization block
     public void initialize() {
+        // creating Path object by String path in filesystem
         startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
 
         // Init root TreeItem to witch others were set
         MyTreeItem rootItem = new MyTreeItem(startPathInControl, false);
-//        rootItem = new FulFillOneItemIcoByType(rootItem).filInTheIcon();
 
-        // getting itemsList in start directory
-        itemsListByPaths = new ItemListPopulator(startPathInControl).populateTreeItemListForController();
-
-        // fulfil TreeItems by icons
-//        itemsListByPaths = new FulFilListItemsIcoByTypes(itemsListByPaths).fillingListOfMyTreeItems();
+        // getting MyTreeItem of subPaths list itemsList in start directory
+        itemsListByPaths = new ItemListPopulator(startPathInControl).populateTreeItemList();
 
         // set all subitems at root
         rootItem.getChildren().addAll(itemsListByPaths);
