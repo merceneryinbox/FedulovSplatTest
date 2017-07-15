@@ -1,9 +1,5 @@
 package filebrowsertools;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,30 +8,35 @@ import java.util.List;
  * Created by mercenery on 13.07.2017.
  */
 public class ItemListPopulator {
-    private final Path startPathInPopulator;
     private List<Path> pathsOnDemandList = new ArrayList<>();
     private List<MyTreeItem> itemsListByPaths;
-
-    private FileSystem fs;
-    private String nameOfStartPath;
-
 
 // Constructor -----------------------------------------------------
 
     public ItemListPopulator(Path startPathInPopulator) {
         itemsListByPaths = new ArrayList<MyTreeItem>();
-        this.startPathInPopulator = startPathInPopulator;
 
-        // getting an Object to further internal reading its contains
-        NioFolderObserver nfo = new NioFolderObserver(startPathInPopulator);
-        // getting PathList to populate TreeItems and return TreeItemsList with populated Items
-        pathsOnDemandList = nfo.getpathList();
+        // getting path List one level down
+        pathsOnDemandList = new NioFolderObserver(startPathInPopulator).getpathList();
     }
-    public List<MyTreeItem> populateTreeItemListForController(){
+
+    /**
+     * Generate list of MyItems filled by icons and relevant Path method
+     * @return
+     */
+    public List<MyTreeItem> populateTreeItemListForController() {
         for (Path p :
                 pathsOnDemandList) {
-                itemsListByPaths.add(new MyTreeItem(p,false));
+            // inject value(Path) into MyTreeItem
+            MyTreeItem mti = new MyTreeItem(p,false);
+
+            // assign icons to MyTreeItem
+            mti = new FulFillOneItemIcoByType(mti).filInTheIcon();
+
+            // adding handled MyTreeItem in MyTreeItem List
+            itemsListByPaths.add(mti);
         }
+        // return handeled MyTreeItems List
         return itemsListByPaths;
     }
 }

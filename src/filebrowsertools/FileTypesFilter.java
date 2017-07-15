@@ -13,9 +13,9 @@ public class FileTypesFilter {
     private boolean isOffice = false;
     private boolean isArchive = false;
     private boolean isWeb = false;
-    private boolean isOthers = false;
-    private boolean isMultimedia = false;
     private boolean isPicture = false;
+    private boolean isMultimedia = false;
+    private boolean isOthers = false;
 
 
     public FileTypesFilter(String fullFileName) {
@@ -25,7 +25,7 @@ public class FileTypesFilter {
         isExecutable = fullFileName.endsWith(".exe") || fullFileName.endsWith(".msi") || fullFileName.endsWith(".bat");
         isOffice = fullFileName.endsWith(".doc") || fullFileName.endsWith(".xls") || fullFileName.endsWith(".txt") || fullFileName.endsWith(".ppt") || fullFileName.endsWith(".pdf");
         isWeb = fullFileName.endsWith(".html");
-        isPicture = fullFileName.endsWith(".jpg") || fullFileName.endsWith(".bmp") || fullFileName.endsWith(".tiff") || fullFileName.endsWith(".gif");
+        isPicture = fullFileName.endsWith(".jpg") || fullFileName.endsWith(".bmp") || fullFileName.endsWith(".tiff") || fullFileName.endsWith(".gif") || fullFileName.endsWith(".png");
         isMultimedia = fullFileName.endsWith(".mp3") || fullFileName.endsWith(".avi") || fullFileName.endsWith(".mp4") || fullFileName.endsWith(".wmv");
         isOthers = (isFolder == false) && (isArchive == false) && (isExecutable == false) && (isOffice == false) && (isWeb == false) && (isPicture == false) && (isMultimedia == false);
     }

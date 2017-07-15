@@ -2,8 +2,6 @@ package filebrowsertools;
 
 import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.nio.file.Path;
 
@@ -17,24 +15,25 @@ public class MyTreeItem<P, N, B> extends TreeItem {
 
     // new field
     private static boolean yetVisited = false;
-    private static Path path;
-
-
+    private Path path;
 
     // inject MyTreeItem in constructor by Path
     public MyTreeItem(Path value) {
         super(value);
+        path = value;
     }
 
     // inject MyTreeItem in constructor by Path, image and visited or not flag
     public MyTreeItem(Path value, Node graphic, Boolean yetVisited) {
         super(value, graphic);
+        path = value;
         this.yetVisited = yetVisited;
     }
 
     // inject MyTreeItem in constructor by Path and visited or not flag
     public MyTreeItem(Path value, Boolean yetVisited) {
         super(value);
+        this.path = value;
         this.yetVisited = yetVisited;
     }
 
@@ -55,6 +54,4 @@ public class MyTreeItem<P, N, B> extends TreeItem {
     public void setYetVisited(boolean yetVisited) {
         this.yetVisited = yetVisited;
     }
-
-
 }

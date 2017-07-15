@@ -3,6 +3,8 @@ package filebrowsertools;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.nio.file.Path;
+
 /**
  * Created by mercenery on 14.07.2017.
  */
@@ -64,10 +66,15 @@ public class FulFillOneItemIcoByType {
     }
 
     public MyTreeItem filInTheIcon() {
-        switch (new FileTypesFilter(resultTreeItem.getPath().getFileName().toString()).filterFileByType()) {
+        Path p = resultTreeItem.getPath();
+        System.out.println(p);
+        String fullFileName = p.toString();
+        String test = new FileTypesFilter(fullFileName).filterFileByType();
+        switch (test) {
             case "folder":
                 if (resultTreeItem.isYetVisited()) {
                     resultTreeItem.setGraphic(iconOpenFolder);
+                    break;
                 } else {
                     resultTreeItem.setGraphic(iconClosedFolder);
                     break;

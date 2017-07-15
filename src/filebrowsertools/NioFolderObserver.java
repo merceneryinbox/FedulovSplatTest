@@ -3,7 +3,6 @@ package filebrowsertools;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -15,7 +14,6 @@ public class NioFolderObserver {
     private Path path;
     private List<Path> pathList;
     private List<Path> pathListRecursive;
-    private SimpleFileVisitor myDirVisitor;
 
     /**
      * The NioFO Constructor injects by Path variable to invoke MyDirectoryWalk(Path) extended SimpleFileVisitor<Path>
@@ -27,7 +25,6 @@ public class NioFolderObserver {
         this.path = path;
         pathList = new ArrayList<>();
         pathListRecursive = new ArrayList<>();
-        myDirVisitor = new MyDirectoryWalk(path);
     }
 
     public List<Path> getpathList() {

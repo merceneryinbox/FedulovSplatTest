@@ -7,13 +7,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.nio.file.Files;
@@ -49,37 +46,24 @@ public class Controller {
     private Path startPathInControl;
     private List<MyTreeItem> itemsListByPaths;
 
-    private String imagePathCloseF = "folder_new.png";
-    private String imagePathOpenF = "folder_new.png";
-
-    private ImageView iconOpenFolder;
-    private ImageView iconClosedFolder;
-
-    private Image imgOpF = new Image(imagePathOpenF);
-    private Image imgCloF = new Image(imagePathCloseF);
-
     // Start Controller Initialization block
     public void initialize() {
-
-
-        iconOpenFolder = new ImageView(imgOpF);
-        iconClosedFolder = new ImageView(imgCloF);
-
         startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
 
         // Init root TreeItem to witch others were set
-        MyTreeItem<Path, Node, Boolean> rootItem = new MyTreeItem<Path, Node, Boolean>(startPathInControl, false);
+        MyTreeItem rootItem = new MyTreeItem(startPathInControl, false);
+//        rootItem = new FulFillOneItemIcoByType(rootItem).filInTheIcon();
 
         // getting itemsList in start directory
         itemsListByPaths = new ItemListPopulator(startPathInControl).populateTreeItemListForController();
 
         // fulfil TreeItems by icons
-        itemsListByPaths = new FulFilListItemsIcoByTypes(itemsListByPaths).fillingListOfMyTreeItems();
+//        itemsListByPaths = new FulFilListItemsIcoByTypes(itemsListByPaths).fillingListOfMyTreeItems();
 
-        // set all subitems on root
+        // set all subitems at root
         rootItem.getChildren().addAll(itemsListByPaths);
 
-        // set root TreeItem on TreeView
+        // set root TreeItem at TreeView
         tvLeft.setRoot(rootItem);
 
         // describe behavior of selected TreeItem in  TreeView and behavior of ListView if TreeItem is Selected
@@ -89,31 +73,43 @@ public class Controller {
 
                 // getting List of elements in selected MyTreeItem if it consists of
                 MyTreeItem subItem = (MyTreeItem) newValue;
+                subItem.setYetVisited(true);
+                subItem = new FulFillOneItemIcoByType(subItem).filInTheIcon();
+                List<MyTreeItem> subItemsList = new ArrayList<>();
+                List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
 
-                // but only if it is directory< not file
-                if (Files.isDirectory(subItem.getPath())&&(!subItem.isYetVisited())) {
-                    subItem.setGraphic(iconOpenFolder);
-
-                    // init subItems list from selected Path
-                    List<MyTreeItem> subItemsList = new ArrayList<>();
+                if (Files.isDirectory(subItem.getPath())) {
 
                     // getting list of Paths in selected directory of MyTreeItem
-                    List<Path> pathListOfMyTreeItemsInListener = new NioFolderObserver(subItem.getPath()).getpathList();
+                    pathListOfMyTreeItemsInListener = new NioFolderObserver(subItem.getPath()).getpathList();
 
-                    // walking tree of paths in selected directory
+                    // walking list of paths in selected directory and creating sub MyTreeItems
                     for (Path subP :
                             pathListOfMyTreeItemsInListener) {
 
                         // creating MyTreeItem with taken Path and default other properties
                         MyTreeItem tmpIinSub = new MyTreeItem(subP);
+
+                        // assign icon to list of MyTreeItems in subfolders
                         tmpIinSub = new FulFillOneItemIcoByType(subItem).filInTheIcon();
+
+                        // add each handled MyTreeItem to list of MyTreeItems
                         subItemsList.add(tmpIinSub);
                     }
+
+                    // recursive setting list of MyTreeItems to root Item
                     subItem.getChildren().addAll(subItemsList);
+                    // setting sub MyTreeItems in selected parent MyTreeItem onto right TableView
                     tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
+
                     // refreshing tableView
                     tableView.refresh();
                 }
+                pathListOfMyTreeItemsInListener.add(subItem.getPath());
+                tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
+
+                // refreshing tableView
+                tableView.refresh();
             }
         });
 //populate columns in table by values from pathinTable
