@@ -82,7 +82,7 @@ public class Controller {
                     pathListOfMyTreeItemsInListener = new NioFolderObserver(p).getSubPathsList();
 
                     // Getting list of handled MyTreeItems
-                    subItemsList = new FulFilListItemsIcoByTypes(subItemsList).fillingListOfMyTreeItems();
+                    subItemsList = new FulFillIcoByType(subItemsList).fillInTheIconsInMyTreeItemsList();
 
                     // recursive setting list of MyTreeItems to root Item
                     subItem.getChildren().addAll(subItemsList);
