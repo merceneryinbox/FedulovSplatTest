@@ -72,10 +72,10 @@ public class Controller {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 
                 // getting List of elements in selected MyTreeItem if it consists of them
-                MyTreeItem subItem = (MyTreeItem) newValue;
-                List<MyTreeItem> subItemsList;
-                subItem = new FulFillIcoByType(subItem).filInTheIconInMyTreeItem();
-                Path p = (Path) subItem.getValue();
+                MyTreeItem selectedItem = (MyTreeItem) newValue;
+                selectedItem.setYetVisited(true);
+                selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
+                Path p = (Path) selectedItem.getValue();
                 List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
 
 /**
@@ -83,10 +83,10 @@ public class Controller {
  */
                 // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
                 if (Files.isDirectory(p)) {
-                    subItemsList = new ItemPopulator(subItem).populate();
+                    List<MyTreeItem> subItemsList = new ItemPopulator(selectedItem).populate();
 
                     // setting list of MyTreeItems to root Item
-                    subItem.getChildren().addAll(subItemsList);
+                    selectedItem.getChildren().addAll(subItemsList);
 
                     // populate list of sub MyTreeItems
                     for (MyTreeItem mt :
@@ -102,7 +102,7 @@ public class Controller {
 
                     // else if path is a file creating list of ine single element and pass it in table view
                 } else {
-                    pathListOfMyTreeItemsInListener.add(((Path) subItem.getValue()));
+                    pathListOfMyTreeItemsInListener.add(((Path) selectedItem.getValue()));
                     tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
 
                     // refreshing tableView
