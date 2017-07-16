@@ -60,7 +60,7 @@ public class NioFolderObserver {
                 public void accept(Path paR) {
                     pathListRecursive.add(paR);
                     if (Files.isDirectory(paR)) {
-                        new NioFolderObserver(paR).getFSElementsAllLevelsDownOnDemand();
+                        new NioFolderObserver(paR).getSubPathsList();
                     }
                 }
             });

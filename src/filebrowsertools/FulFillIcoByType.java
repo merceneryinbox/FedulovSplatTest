@@ -4,69 +4,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by mercenery on 14.07.2017.
  */
 public class FulFillIcoByType {
+
+
     private List<MyTreeItem> incomeList = null;
-    private List<MyTreeItem> outcomeList;
-
+    private List<MyTreeItem> outcomeList = null;
     private MyTreeItem resultTreeItem = null;
-    private MyTreeItem incomTreeItem = null;
-
-    private String imageFolderCloseF = "icoes\\folder_closed.png";
-    private String imageFolderOpenF = "icoes\\folder_opened.png";
-    private String imageArchiveFile = "icoes\\archive.png";
-    private String imageExeFile = "icoes\\exe.png";
-    private String imageOfficeFile = "icoes\\office.png";
-    private String imageWebFile = "icoes\\web.png";
-    private String imagePictureFile = "icoes\\picture.png";
-    private String imageMultimediaFile = "icoes\\multimedia.png";
-    private String imageOtherFile = "icoes\\other.png";
-
-    private ImageView iconOpenFolder;
-    private ImageView iconClosedFolder;
-    private ImageView iconArchiveFile;
-    private ImageView iconExeFile;
-    private ImageView iconOfficeFile;
-    private ImageView iconWebFile;
-    private ImageView iconPictureFile;
-    private ImageView iconMultimediaFile;
-    private ImageView iconOtherFile;
-
-    private Image imgOpenFolder;
-    private Image imgClosedFolder;
-    private Image imgArchiveFile;
-    private Image imgExeFile;
-    private Image imgOfficeFile;
-    private Image imgWebFile;
-    private Image imgPictureFile;
-    private Image imgMultimediaFile;
-    private Image imgOtherFile;
 
     {
-
-        imgOpenFolder = new Image(imageFolderOpenF);
-        imgClosedFolder = new Image(imageFolderCloseF);
-        imgArchiveFile = new Image(imageArchiveFile);
-        imgExeFile = new Image(imageExeFile);
-        imgOfficeFile = new Image(imageOfficeFile);
-        imgWebFile = new Image(imageWebFile);
-        imgPictureFile = new Image(imagePictureFile);
-        imgMultimediaFile = new Image(imageMultimediaFile);
-        imgOtherFile = new Image(imageOtherFile);
-
-        iconOpenFolder = new ImageView(imgOpenFolder);
-        iconClosedFolder = new ImageView(imgClosedFolder);
-        iconArchiveFile = new ImageView(imgArchiveFile);
-        iconExeFile = new ImageView(imgExeFile);
-        iconOfficeFile = new ImageView(imgOfficeFile);
-        iconWebFile = new ImageView(imgWebFile);
-        iconPictureFile = new ImageView(imgPictureFile);
-        iconMultimediaFile = new ImageView(imgMultimediaFile);
-        iconOtherFile = new ImageView(imgOtherFile);
+        outcomeList = new ArrayList<>();
     }
 
     /**
@@ -81,10 +33,10 @@ public class FulFillIcoByType {
     /**
      * Constructor inject dependency with MyTreeItems list
      *
-     * @param list
+     * @param incomeList
      */
-    public FulFillIcoByType(List list) {
-        incomeList = list;
+    public FulFillIcoByType(List incomeList) {
+        this.incomeList = incomeList;
     }
 
     /**
@@ -94,57 +46,85 @@ public class FulFillIcoByType {
      * @return
      */
     public MyTreeItem filInTheIconInMyTreeItem() {
-        if (incomeList == null) {
 
-            Path p = (Path) resultTreeItem.getValue();
-            System.out.println(p);
-            String fullFileName = p.toString();
-            String test = new FileTypesFilter(fullFileName).filterFileByType();
-            switch (test) {
-                case "folder":
-                    if (resultTreeItem.isYetVisited()) {
-                        resultTreeItem.setGraphic(iconOpenFolder);
-                        break;
-                    } else {
-                        resultTreeItem.setGraphic(iconClosedFolder);
-                        break;
-                    }
-                case "archive":
-                    resultTreeItem.setGraphic(iconArchiveFile);
+        Path p = (Path) resultTreeItem.getValue();
+        String fullFileName = p.toString();
+
+        // Getting the type of selected MyTreeItem
+        String test = new FileTypesFilter(fullFileName).filterFileByType();
+
+        /**
+         * Handle MyTreeItem by setting icons according to its value extensions
+         */
+        switch (test) {
+            case "folder":
+                if (resultTreeItem.isYetVisited() == true) {
+                    String imageFolderOpenF = "icoes\\folder_opened.png";
+                    Image imgOpenFolder = new Image(imageFolderOpenF);
+                    ImageView iconOpenFolder = new ImageView(imgOpenFolder);
+                    resultTreeItem.setGraphic(iconOpenFolder);
                     break;
-                case "exe":
-                    resultTreeItem.setGraphic(iconExeFile);
-                    break;
-                case "office":
-                    resultTreeItem.setGraphic(iconOfficeFile);
-                    break;
-                case "web":
-                    resultTreeItem.setGraphic(iconWebFile);
-                    break;
-                case "picture":
-                    resultTreeItem.setGraphic(iconPictureFile);
-                    break;
-                case "multimedia":
-                    resultTreeItem.setGraphic(iconMultimediaFile);
-                    break;
-                case "others":
-                    resultTreeItem.setGraphic(iconOtherFile);
-                    break;
-                default:
-                    resultTreeItem.setGraphic(iconOtherFile);
-                    break;
+                } else if (resultTreeItem.isYetVisited() == false) {
+                String imageFolderCloseF = "icoes\\folder_closed.png";
+                Image imgClosedFolder = new Image(imageFolderCloseF);
+                ImageView iconClosedFolder = new ImageView(imgClosedFolder);
+                resultTreeItem.setGraphic(iconClosedFolder);
+                break;
             }
+            case "archive":
+                String imageArchiveFile = "icoes\\archive.png";
+                Image imgArchiveFile = new Image(imageArchiveFile);
+                ImageView iconArchiveFile = new ImageView(imgArchiveFile);
+                resultTreeItem.setGraphic(iconArchiveFile);
+                break;
+            case "exe":
+                String imageExeFile = "icoes\\exe.png";
+                Image imgExeFile = new Image(imageExeFile);
+                ImageView iconExeFile = new ImageView(imgExeFile);
+                resultTreeItem.setGraphic(iconExeFile);
+                break;
+            case "office":
+                String imageOfficeFile = "icoes\\office.png";
+                Image imgOfficeFile = new Image(imageOfficeFile);
+                ImageView iconOfficeFile = new ImageView(imgOfficeFile);
+                resultTreeItem.setGraphic(iconOfficeFile);
+                break;
+            case "web":
+                String imageWebFile = "icoes\\web.png";
+                Image imgWebFile = new Image(imageWebFile);
+                ImageView iconWebFile = new ImageView(imgWebFile);
+                resultTreeItem.setGraphic(iconWebFile);
+                break;
+            case "picture":
+                String imagePictureFile = "icoes\\picture.png";
+                Image imgPictureFile = new Image(imagePictureFile);
+                ImageView iconPictureFile = new ImageView(imgPictureFile);
+                resultTreeItem.setGraphic(iconPictureFile);
+                break;
+            case "multimedia":
+                String imageMultimediaFile = "icoes\\multimedia.png";
+                Image imgMultimediaFile = new Image(imageMultimediaFile);
+                ImageView iconMultimediaFile = new ImageView(imgMultimediaFile);
+                resultTreeItem.setGraphic(iconMultimediaFile);
+                break;
+            case "others":
+                String imageOtherFile = "icoes\\other.png";
+                Image imgOtherFile = new Image(imageOtherFile);
+                ImageView iconOtherFile = new ImageView(imgOtherFile);
+                resultTreeItem.setGraphic(iconOtherFile);
+                break;
         }
         return resultTreeItem;
     }
 
     public List<MyTreeItem> fillInTheIconsInMyTreeItemsList() {
-        if (incomTreeItem == null) {
-            // recursive filling MyTreeItems elements of list one-by-one with help of domestic method
-            for (MyTreeItem it :
-                    incomeList) {
-                outcomeList.add(new FulFillIcoByType(it).filInTheIconInMyTreeItem());
-            }
+
+        // recursive filling MyTreeItems elements of list one-by-one with help of domestic method
+        for (MyTreeItem it :
+                incomeList) {
+            MyTreeItem mti = new FulFillIcoByType(it).filInTheIconInMyTreeItem();
+            mti.setYetVisited(false);
+            outcomeList.add(mti);
         }
         // returning fulfilled list back
         return outcomeList;

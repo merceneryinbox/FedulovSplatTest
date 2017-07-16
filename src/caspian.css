@@ -104,12 +104,6 @@
     /* A little lighter than -fx-base and used as the -fx-color for the
      * "hovered" pseudoclass state.
      */
-    -fx-hover-base: ladder(
-        -fx-base,
-        derive(-fx-base,20%) 20%,
-        derive(-fx-base,30%) 35%,
-        derive(-fx-base,40%) 50%
-     );
 
     /* A little darker than -fx-base and used as the -fx-color for the
      * "armed" pseudoclass state.
@@ -731,7 +725,6 @@
 .hyperlink:focused {
     -fx-color: -fx-focused-base;
     -fx-border-color: -fx-focus-color;
-    -fx-border-style: segments(0.166667em, 0.166667em);
     -fx-border-width: 1px;
 }
 

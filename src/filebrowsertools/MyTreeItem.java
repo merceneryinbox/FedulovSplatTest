@@ -14,7 +14,7 @@ import java.nio.file.Path;
 public class MyTreeItem<P, N, B> extends TreeItem {
 
     // new field
-    private static boolean yetVisited = false;
+    private boolean yetVisited = false;
 
     // inject MyTreeItem in constructor by Path
     public MyTreeItem(Path value) {
@@ -32,10 +32,6 @@ public class MyTreeItem<P, N, B> extends TreeItem {
         super(value);
         this.yetVisited = yetVisited;
     }
-
-    // getting Path value from MyTreeItem
-
-    // setting Path value
 
     public boolean isYetVisited() {
         return yetVisited;

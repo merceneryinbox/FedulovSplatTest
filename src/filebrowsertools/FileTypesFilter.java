@@ -27,18 +27,22 @@ public class FileTypesFilter {
      */
     public FileTypesFilter(String fullFileName) {
         this.fullFileName = fullFileName;
-        isFolder = fullFileName.endsWith("/") || fullFileName.endsWith("");
-        isArchive = fullFileName.endsWith(".zip") || fullFileName.endsWith(".arj") || fullFileName.endsWith("rar");
-        isExecutable = fullFileName.endsWith(".exe") || fullFileName.endsWith(".msi") || fullFileName.endsWith(".bat");
-        isOffice = fullFileName.endsWith(".doc") || fullFileName.endsWith(".xls") || fullFileName.endsWith(".txt") || fullFileName.endsWith(".ppt") || fullFileName.endsWith(".pdf");
-        isWeb = fullFileName.endsWith(".html");
-        isPicture = fullFileName.endsWith(".jpg") || fullFileName.endsWith(".bmp") || fullFileName.endsWith(".tiff") || fullFileName.endsWith(".gif") || fullFileName.endsWith(".png");
-        isMultimedia = fullFileName.endsWith(".mp3") || fullFileName.endsWith(".avi") || fullFileName.endsWith(".mp4") || fullFileName.endsWith(".wmv");
-        isOthers = (isFolder == false) && (isArchive == false) && (isExecutable == false) && (isOffice == false) && (isWeb == false) && (isPicture == false) && (isMultimedia == false);
+        if (fullFileName.contains(".")) {
+            isArchive = fullFileName.endsWith(".zip") || fullFileName.endsWith(".arj") || fullFileName.endsWith("rar");
+            isExecutable = fullFileName.endsWith(".exe") || fullFileName.endsWith(".msi") || fullFileName.endsWith(".bat");
+            isOffice = fullFileName.endsWith(".djvu") || fullFileName.endsWith(".doc") || fullFileName.endsWith(".xls") || fullFileName.endsWith(".txt") || fullFileName.endsWith(".ppt") || fullFileName.endsWith(".pdf");
+            isWeb = fullFileName.endsWith(".html") || fullFileName.endsWith(".xml") || fullFileName.endsWith(".fxml");
+            isPicture = fullFileName.endsWith(".jpg") || fullFileName.endsWith(".bmp") || fullFileName.endsWith(".tiff") || fullFileName.endsWith(".gif") || fullFileName.endsWith(".png");
+            isMultimedia = fullFileName.endsWith(".mp3") || fullFileName.endsWith(".avi") || fullFileName.endsWith(".mp4") || fullFileName.endsWith(".wmv");
+            isOthers = (isFolder == false) && (isArchive == false) && (isExecutable == false) && (isOffice == false) && (isWeb == false) && (isPicture == false) && (isMultimedia == false);
+        } else {
+            isFolder = true;
+        }
     }
 
     /**
      * FileTypesFilter constructor Path to witch apply filter of types
+     *
      * @param givenPath
      */
     public FileTypesFilter(Path givenPath) {
@@ -49,8 +53,10 @@ public class FileTypesFilter {
     /**
      * Single method of FiletypesFilter witch is really handle the filename type, and return result in String answer -
      * its tell what type of file by its filename
+     *
      * @return
      */
+
     public String filterFileByType() {
         if (isFolder) {
             resultType = "folder";
