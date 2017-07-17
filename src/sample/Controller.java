@@ -10,16 +10,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
@@ -73,7 +70,7 @@ public class Controller {
 
         // set root TreeItem at TreeView
         tvLeft.setRoot(rootItem);
-
+        tvLeft.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         // describe behavior of selected TreeItem in  TreeView and behavior of ListView if TreeItem is Selected
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -84,13 +81,13 @@ public class Controller {
                 selectedItem.setYetVisited(true);
                 selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
                 Path p = (Path) selectedItem.getValue();
-                List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
-
 /**
  * if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
  */
+                List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
                 // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
                 if (Files.isDirectory(p)) {
+                    // populating subMyTreeItems List in "p" - selected Directory
                     List<MyTreeItem> subItemsList = new ItemPopulator(selectedItem).populate();
 
                     // setting list of MyTreeItems to root Item
@@ -144,7 +141,6 @@ public class Controller {
     }
 
 
-
     public void makeFolder(ActionEvent actionEvent) {
 
     }
@@ -158,7 +154,15 @@ public class Controller {
     }
 
     public void deleteFile(ActionEvent actionEvent) {
-
+        MyTreeItem selectedToDelete = (MyTreeItem) tvLeft.getSelectionModel().getSelectedItem();
+        Path pp = (Path) selectedToDelete.getValue();
+        File f = pp.toFile();
+        MyTreeItem parentOfselectedToDelete = (MyTreeItem) selectedToDelete.getParent();
+        if (parentOfselectedToDelete != null) {
+            parentOfselectedToDelete.getChildren().remove(selectedToDelete);
+// recursive deleting all files in directory and directory itself
+            pathRecursiveDelete(pp);
+        }
     }
 
     public void showAbout(ActionEvent actionEvent) {
@@ -167,5 +171,22 @@ public class Controller {
 
     public void renameFile(ActionEvent actionEvent) {
 
+    }
+// ending deleting after close aapplication
+    public void pathRecursiveDelete(Path path) {
+        File convertPath = path.toFile();
+        try {
+            if (!Files.isDirectory(convertPath.toPath())) {
+                convertPath.delete();
+            } else {
+                for (File ppp :
+                        convertPath.listFiles()) {
+                    pathRecursiveDelete(ppp.toPath());
+                }
+                Files.delete(path);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
