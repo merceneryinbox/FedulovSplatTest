@@ -4151,17 +4151,17 @@ to the top and bottom -fx-padding values of the parent toolbar. */
 .alert.confirmation.dialog-pane,
 .text-input-dialog.dialog-pane,
 .choice-dialog.dialog-pane {
-    -fx-graphic: url("caspian/dialog-confirm.png");
+    -fx-graphic: ("caspian/dialog-confirm.png");
 }
 
 .alert.information.dialog-pane {
-    -fx-graphic: url("caspian/dialog-information.png");
+    -fx-graphic: ("caspian/dialog-information.png");
 }
 
 .alert.error.dialog-pane {
-    -fx-graphic: url("caspian/dialog-error.png");
+    -fx-graphic: ("caspian/dialog-error.png");
 }
 
 .alert.warning.dialog-pane {
-    -fx-graphic: url("caspian/dialog-warning.png");
+    -fx-graphic: ("caspian/dialog-warning.png");
 }

@@ -16,6 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 import java.nio.file.Files;
@@ -43,7 +45,7 @@ public class Controller {
     private TableColumn<Path, String> tableViewDate;
 
     @FXML
-    private MenuItem mnNew;
+    private MenuItem mnFileNew;
 
     @FXML
     private MenuItem mnFileOpen;
@@ -116,11 +118,13 @@ public class Controller {
                 }
             }
         });
+
+
 //populate columns in table by values from pathinTable
         tableViewName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Path, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Path, String> c) {
-                return new SimpleStringProperty(((Path) c.getValue()).toString());
+                return new SimpleStringProperty((c.getValue()).toString());
             }
         });
 
@@ -138,6 +142,8 @@ public class Controller {
             }
         });
     }
+
+
 
     public void makeFolder(ActionEvent actionEvent) {
 

@@ -12,12 +12,12 @@
                     <items>
                         <AnchorPane minHeight="347.0" minWidth="158.0" prefHeight="347.0" prefWidth="158.0">
                             <children>
-                                <TreeView fx:id="tvLeft" layoutY="25.0" minHeight="300.0" minWidth="200.0" prefHeight="370.0" prefWidth="158.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+                                <TreeView fx:id="tvLeft" editable="true" layoutY="25.0" minHeight="300.0" minWidth="200.0" prefHeight="370.0" prefWidth="158.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="300.0" minWidth="350.0" prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="tableView" layoutY="24.0" minHeight="370.0" minWidth="432.0" prefHeight="370.0" prefWidth="432.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+                                <TableView fx:id="tableView" editable="true" layoutY="24.0" minHeight="370.0" minWidth="432.0" prefHeight="370.0" prefWidth="432.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
                                     <columns>
                                         <TableColumn fx:id="tableViewName" editable="false" maxWidth="400.0" minWidth="180.0" prefWidth="200.0" text="File Name" />
                                         <TableColumn fx:id="tableViewSize" editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="70.0" text="Size kB" />
