@@ -14,6 +14,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.nio.file.Files;
@@ -43,8 +45,11 @@ public class Controller {
     @FXML
     private MenuItem mnNew;
 
+    @FXML
+    private MenuItem mnFileOpen;
+
     private List<Path> pathsOnDemandList;
-    private String nameOfStartPath = "D:\\Kali\\";
+    private String nameOfStartPath = "D:\\";
     private Path startPathInControl;
     private List<MyTreeItem> itemsListByPaths;
 
@@ -56,7 +61,8 @@ public class Controller {
 
         // Init root TreeItem to witch others were set
         MyTreeItem rootItem = new MyTreeItem(startPathInControl);
-
+        rootItem.setExpanded(true);
+        rootItem.setGraphic(new ImageView(new Image("icoes\\folder_opened.png")));
         // getting MyTreeItemList of sub items in start directory
         itemsListByPaths = new ItemPopulator(rootItem).populate();
 
@@ -94,7 +100,7 @@ public class Controller {
                         pathListOfMyTreeItemsInListener.add((Path) mt.getValue());
                     }
 
-                    // setting sub MyTreeItems in selected parent MyTreeItem onto right TableView
+                    // setting sub MyTreeItems in selected parent Paths onto right TableView
                     tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
 
                     // refreshing tableView
@@ -150,6 +156,10 @@ public class Controller {
     }
 
     public void showAbout(ActionEvent actionEvent) {
+
+    }
+
+    public void renameFile(ActionEvent actionEvent) {
 
     }
 }

@@ -2284,11 +2284,6 @@
     -fx-opacity: -fx-disabled-opacity;
 }
 
-/*.table-cell:focused {
-    -fx-background-color: -fx-focus-color, -fx-control-inner-background;
-    -fx-background-insets: 0, 1.4;
-}*/
-
 .table-view:cell-selection > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .table-cell:hover,
 .tree-table-view:cell-selection > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .tree-table-cell:hover {
     -fx-background-color: -fx-cell-hover-color;
@@ -2336,10 +2331,7 @@
           Refer to RT-12298 for the spec.
         */
         derive(-fx-base, 80%)
-        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%)
-        derive(-fx-base, 10%)
-        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
-        /* Outer border: */
+/* Outer border: */
         transparent -fx-table-header-border-color -fx-table-header-border-color transparent;
     -fx-border-insets: 0 1 1 0, 0 0 0 0;
     -fx-border-width: 0.083333em, 0.083333em;
@@ -2355,9 +2347,7 @@
           Refer to RT-12298 for the spec.
         */
         derive(-fx-base, 80%)
-        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%)
-        derive(-fx-base, 10%)
-        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
+
         /* Outer border: */
         transparent transparent -fx-table-header-border-color transparent;
     -fx-border-insets: 0 0 1 0, 0 0 0 0;
@@ -2402,9 +2392,7 @@
     -fx-border-color:
         /* inner border: A copy of the inner border used above in the general column header area. */
         derive(-fx-base, 80%)
-        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
         derive(-fx-base, 10%)
-        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
         /* outer border: Slightly different to the above*/
         transparent transparent -fx-table-header-border-color -fx-table-header-border-color;
     -fx-border-insets: 0 0 0 1, 0 0 0 0;
@@ -2497,11 +2485,6 @@
 }
 
 .titled-pane > *.content {
-    -fx-background-color:
-        -fx-box-border,
-        linear-gradient(to bottom, derive(-fx-color,-02%), derive(-fx-color,65%) 12%, derive(-fx-color,23%) 88%, derive(-fx-color,50%) 99%, -fx-box-border);
-    -fx-background-insets: 0, 0 1 1 1;
-    -fx-padding: 0.167em;
 }
 
 .titled-pane:focused > .title > .arrow-button > .arrow {
@@ -2690,7 +2673,6 @@
 }
 
 .tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
-    -fx-border-style: segments(0.166667em, 0.166667em);
     -fx-border-width: 1;
     -fx-border-color: -fx-focus-color;
 }
@@ -2821,8 +2803,6 @@
     -fx-font-size: 1.4em;
 }
 .chart-legend {
-   -fx-background-color: ladder(-fx-background, derive(-fx-box-border, -10%) 50%, derive(-fx-box-border, 10%) 51%),
-                         ladder(-fx-background, derive(-fx-control-inner-background, 5%) 50%, derive(-fx-control-inner-background, -5%) 51%);
    -fx-background-insets: 0,1;
    -fx-background-radius: 6,5;
    -fx-padding: 6px;
@@ -3026,29 +3006,17 @@
 /* TODO flip gradient vertical for negative bars */
 .chart-bar {
     -fx-bar-fill: #22bad9;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
 
 .negative.chart-bar {
-   -fx-background-color: linear-gradient(to top, derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(to top, derive(-fx-bar-fill, 80%), derive(-fx-bar-fill,0%)),
-                          linear-gradient(to top, derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
    -fx-background-radius: 0 0 5 5, 0 0 4 4, 0 0 3 3;
 }
 .bar-chart:horizontal .chart-bar, .stacked-bar-chart:horizontal .chart-bar {
-    -fx-background-color: linear-gradient(to left, derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(to left, derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(to left, derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-radius: 0 5 5 0, 0 4 4 0, 0 3 3 0;
 }
 .bar-chart:horizontal .negative.chart-bar, .stacked-bar-chart:horizontal .negative.chart-bar {
-    -fx-background-color: linear-gradient(to right, derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(to right, derive(-fx-bar-fill, 80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(to right, derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-radius: 5 0 0 5, 4 0 0 4, 3 0 0 3;
 }
 .default-color0.chart-bar { -fx-bar-fill: #f9d900; }
@@ -3065,7 +3033,6 @@
 /* ====== PIE CHART ============================================================== */
 .chart-pie {
     -fx-pie-color: #2f357f;
-    -fx-background-color: radial-gradient(radius 100%, derive(-fx-pie-color,55%), derive(-fx-pie-color,-20%));
     -fx-background-insets: 0;
     -fx-border-color: derive(-fx-pie-color,-30%);
 }
@@ -3284,18 +3251,6 @@ Only the properties with values that are different from the TextBox are specifie
 
 .color-palette {
     -fx-spacing: 15px;
-     -fx-background-color:
-        derive(-fx-color,-40%),
-        derive(-fx-color,100%),
-        linear-gradient(to bottom,
-        derive(-fx-color,100%) 0%,
-        derive(-fx-color,50%) 12%,
-        derive(-fx-color,65%) 88%,
-        derive(-fx-color,23%) 100%);
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
-    -fx-padding: 15 15 15 15;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
 }
 
 .color-palette > .color-picker-grid > .color-square > .color-rect {
@@ -3384,9 +3339,6 @@ Only the properties with values that are different from the TextBox are specifie
 
 /* The fix for RT-37494 forces the web color text's major direction to
  * LTR. The following keeps the text right-aligned when in RTL mode. */
-.custom-color-dialog .webcolor-field:dir(rtl) > .text-field:dir(ltr) {
-    -fx-alignment: baseline-right;
-}
 
 
 /* -------- Toggle Button ---------------- */
@@ -3409,8 +3361,6 @@ Only the properties with values that are different from the TextBox are specifie
 .custom-color-dialog .controls-pane .toggle-button:selected {
     -fx-background-color:
         -fx-shadow-highlight-color,
-        linear-gradient( to bottom, derive(-fx-color,-90%) 0%, derive(-fx-color,-60%) 100% ),
-        linear-gradient( to bottom, derive(-fx-color,-60%) 0%, derive(-fx-color,-35%) 50%, derive(-fx-color,-30%) 98%, derive(-fx-color,-50%) 100% ),
         linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,0) 90%, rgba(0,0,0,0.3) 100% );
     -fx-background-insets: 0 0 -0.083333em 0, 0, 0.083333em, 0.083333em;
     /* TODO: -fx-text-fill should be derived */
@@ -3476,7 +3426,6 @@ Only the properties with values that are different from the TextBox are specifie
 }
 
 .custom-color-dialog .transparent-pattern {
-    -fx-background-image: url("caspian/pattern-transparent.png");
     -fx-background-repeat: repeat;
     -fx-background-size: auto;
 }
@@ -3925,19 +3874,9 @@ Only the properties with values that are different from the TextBox are specifie
 }
 /* Each Toolbar is constructed of two stacked shapes */
 .html-editor > * > .top-toolbar {
-    -fx-background-color:
-        linear-gradient(to bottom, white 10%, derive(-fx-base, 50%) 90%),
-        linear-gradient(to bottom, derive(-fx-base, 65%) 0%, derive(-fx-base, 5%) 90%);
-    -fx-background-insets: 0, 1;
-    -fx-border-color: transparent transparent derive(-fx-base,-20%) transparent, transparent;
-    -fx-border-width: 1, 0;
-    -fx-padding: 0.333em 0.5em 0.333em 0.5em; /* 4 6 4 6;*/
 }
 
 .html-editor > * > .bottom-toolbar {
-    -fx-background-color:
-        linear-gradient(to bottom,  derive(-fx-base, 50%) 10%, derive(-fx-base, -60%) 90%),
-        linear-gradient(to bottom,  derive(-fx-base, 5%) 0%, derive(-fx-base, -15%) 90%);
     -fx-background-insets: 0, 1;
     -fx-border-color: transparent derive(-fx-base,50%) transparent derive(-fx-base,50%),
     transparent transparent derive(-fx-base,-60%) transparent;
@@ -4029,9 +3968,6 @@ to the top and bottom -fx-padding values of the parent toolbar. */
 }
 
 .html-editor > * > * > .toggle-button:selected {
-    -fx-background-color: transparent,
-    linear-gradient(to bottom,  derive(-fx-base, -70%) 10%, derive(-fx-base, -40%) 90%),
-    linear-gradient(to bottom,  derive(-fx-base, -40%) 0%, derive(-fx-base, -20%) 50%, derive(-fx-base, -10%) 98%, derive(-fx-base, -35%) 100%);
 }
 
 .html-editor > * > * > .font-menu-button {
@@ -4054,11 +3990,6 @@ to the top and bottom -fx-padding values of the parent toolbar. */
     -fx-background-radius: 3, 3, 2;
 }
 .spinner:focused,
-.spinner:contains-focus {
-    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
-    -fx-background-insets: -1.4 -1.4 -0.4 -1.4, 0 0 1 0, 1 1 2 1;
-    -fx-background-radius: 4, 3, 2;
-}
 .spinner:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
@@ -4205,27 +4136,6 @@ to the top and bottom -fx-padding values of the parent toolbar. */
     -fx-padding: 0.833em; /* 10 */
 }
 
-.dialog-pane:no-header .graphic-container {
-    -fx-padding: 0.833em 0 0 0.833em; /* 10px 0px 0px 10px */
-}
-
-.dialog-pane:header .header-panel {
-    /*-fx-padding: 0.833em 1.166em 0.833em 1.166em; *//* 10px 14px 10px 14px */
-    -fx-padding: 0.833em; /* 10px */
-    -fx-background-color: -fx-box-border, linear-gradient(-fx-background, derive(-fx-background, 30%));
-    -fx-background-insets: 0, 0 0 1 0;
-}
-
-.dialog-pane:header .header-panel .label {
-    -fx-font-size: 1.167em; /* 14px */
-    -fx-wrap-text: true;
-}
-
-.dialog-pane:header .header-panel .graphic-container {
-    /* This prevents the text in the header running directly into the graphic */
-    -fx-padding: 0 0 0 0.833em; /* 0px 0px 0px 10px */
-}
-
 .dialog-pane > .button-bar > .container > .details-button {
     -fx-alignment: baseline-left;
     -fx-focus-traversable: false;
@@ -4233,13 +4143,6 @@ to the top and bottom -fx-padding values of the parent toolbar. */
     -fx-font-size: 0.833em; /* 10px */
 }
 
-.dialog-pane > .button-bar > .container > .details-button.more {
-    -fx-graphic: url("caspian/dialog-more-details.png");
-}
-
-.dialog-pane > .button-bar > .container > .details-button.less {
-    -fx-graphic: url("caspian/dialog-fewer-details.png");
-}
 
 .dialog-pane > .button-bar > .container > .details-button:hover {
     -fx-underline: true;

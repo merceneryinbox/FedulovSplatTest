@@ -32,19 +32,20 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem fx:id="mnNew" mnemonicParsing="false" onAction="#makeFolder" text="New" />
-                                <MenuItem fx:id="mnOpen" mnemonicParsing="false" onAction="#openFolder" text="Open" />
-                                <MenuItem fx:id="mnClose" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+                                <MenuItem fx:id="mnFileNew" mnemonicParsing="false" onAction="#makeFolder" text="New" />
+                                <MenuItem fx:id="mnFileOpen" mnemonicParsing="false" onAction="#openFolder" text="Open" />
+                                <MenuItem fx:id="mnFileClose" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="mnDelete" mnemonicParsing="false" onAction="#deleteFile" text="Delete" />
+                                <MenuItem fx:id="mnEditDelete" mnemonicParsing="false" onAction="#deleteFile" text="Delete" />
+                                <MenuItem fx:id="mnEditDeleteRename" mnemonicParsing="false" onAction="#renameFile" text="Rename" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem fx:id="mnAbout" mnemonicParsing="false" onAction="#showAbout" text="About" />
+                                <MenuItem fx:id="mnHelpAbout" mnemonicParsing="false" onAction="#showAbout" text="About" />
                             </items>
                         </Menu>
                     </menus>
