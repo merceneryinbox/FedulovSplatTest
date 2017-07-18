@@ -231,11 +231,6 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
-    public void openInDeskByClick(MouseEvent mouseEvent) {
-
-    }
-
     public void openFileDeskInTable(MouseEvent mouseEvent) {
         Path selected = (Path) tableView.getSelectionModel().getSelectedItem();
         Desktop desktop = Desktop.getDesktop();
