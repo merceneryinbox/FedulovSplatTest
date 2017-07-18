@@ -13,6 +13,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Callback;
 
 import java.io.File;
@@ -40,6 +43,9 @@ public class Controller {
 
     @FXML
     private TableColumn<Path, String> tableViewDate;
+    @FXML
+
+    private MenuBar menuBar;
 
     @FXML
     private MenuItem mnFileNew;
@@ -47,8 +53,12 @@ public class Controller {
     @FXML
     private MenuItem mnFileOpen;
 
+    @FXML
+    private MenuItem mnFileClose;
+
+
     private List<Path> pathsOnDemandList;
-    private String nameOfStartPath = "D:\\";
+    private String nameOfStartPath = ".";
     private Path startPathInControl;
     private List<MyTreeItem> itemsListByPaths;
 
@@ -146,11 +156,13 @@ public class Controller {
     }
 
     public void openFolder(ActionEvent actionEvent) {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Create Folder Dialog");
+        File file = fileChooser.showOpenDialog(null);
     }
 
     public void closeWindow(ActionEvent actionEvent) {
-
+            System.exit(0);
     }
 
     public void deleteFile(ActionEvent actionEvent) {

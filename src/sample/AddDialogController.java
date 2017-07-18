@@ -18,7 +18,7 @@ public class AddDialogController {
     TextField inptTxtInAddingDialog;
 
     public void modalWindowAddFolder(ActionEvent actionEvent) throws IOException {
-        
+
 
     }
 
