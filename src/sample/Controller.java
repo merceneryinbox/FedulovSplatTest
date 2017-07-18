@@ -159,6 +159,8 @@ public class Controller {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Create Folder Dialog");
         File file = fileChooser.showOpenDialog(null);
+        tableView.getItems().add(file.toPath());
+        tableView.refresh();
     }
 
     public void closeWindow(ActionEvent actionEvent) {
