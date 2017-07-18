@@ -213,7 +213,7 @@ public class Controller {
         FXMLLoader aboutLoader = new FXMLLoader(getClass().getResource("about.fxml"));
         Stage aboutDialogStage = new Stage();
         aboutDialogStage.setResizable(false);
-        aboutDialogStage.setTitle("Description programm working");
+        aboutDialogStage.setTitle("Description program working");
         Scene aboutScene;
         try {
             Parent addDialogRoot = (Parent) aboutLoader.load();
