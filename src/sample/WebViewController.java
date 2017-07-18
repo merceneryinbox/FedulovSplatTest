@@ -14,10 +14,9 @@ public class WebViewController {
 
     public void initialize() {
 
-
         vbView = new WebView();
         WebEngine engine = vbView.getEngine();
-        engine.load("file:///D:/IdeaEEProj/testFX/src/JavaDocs/index.html");
+        engine.load(this.getClass().getResource("file:///D:/IdeaEEProj/testFX/src/JavaDocs/index.html").toExternalForm());
 
     }
 }

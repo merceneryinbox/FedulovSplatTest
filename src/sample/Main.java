@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         root.getStylesheets().add("caspian.css");
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Fedulov Oleg (mercenery@inbox.ru; +7 921 989 68 90) for SPLAT test. (Stage one)");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setAlwaysOnTop(false);

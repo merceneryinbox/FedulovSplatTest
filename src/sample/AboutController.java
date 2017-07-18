@@ -18,7 +18,7 @@ public class AboutController {
 
     public void initialize() {
 
-        File aboutFile = new File("Description of program");
+        File aboutFile = new File("Descriptionofprogramm.txt");
         try {
             String s = "";
             BufferedReader br = new BufferedReader(new FileReader(aboutFile));
@@ -31,6 +31,5 @@ public class AboutController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
