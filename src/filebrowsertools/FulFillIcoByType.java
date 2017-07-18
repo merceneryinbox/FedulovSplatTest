@@ -45,7 +45,7 @@ public class FulFillIcoByType {
      *
      * @return
      */
-    public MyTreeItem filInTheIconInMyTreeItem() {
+    public MyTreeItem filInTheIconInMyTreeItem() throws InterruptedException {
 
         Path p = (Path) resultTreeItem.getValue();
         String fullFileName = p.toString();
@@ -59,6 +59,13 @@ public class FulFillIcoByType {
         switch (test) {
             case "folder":
                 if (resultTreeItem.isYetVisited() == true) {
+                    String imageFolderOpenFrefresh = "icoes/refresh.gif";
+                    Image imgOpenFolderrefresh = new Image(imageFolderOpenFrefresh);
+                    ImageView iconOpenFolderrefresh = new ImageView(imgOpenFolderrefresh);
+                    resultTreeItem.setGraphic(iconOpenFolderrefresh);
+
+                    Thread.sleep(1000);
+
                     String imageFolderOpenF = "icoes\\folder_opened.png";
                     Image imgOpenFolder = new Image(imageFolderOpenF);
                     ImageView iconOpenFolder = new ImageView(imgOpenFolder);
@@ -117,7 +124,7 @@ public class FulFillIcoByType {
         return resultTreeItem;
     }
 
-    public List<MyTreeItem> fillInTheIconsInMyTreeItemsList() {
+    public List<MyTreeItem> fillInTheIconsInMyTreeItemsList() throws InterruptedException {
 
         // recursive filling MyTreeItems elements of list one-by-one with help of domestic method
         for (MyTreeItem it :

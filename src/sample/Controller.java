@@ -72,7 +72,7 @@ public class Controller {
     private List<MyTreeItem> itemsListByPaths;
 
     // Start Controller initialization block
-    public void initialize() {
+    public void initialize() throws InterruptedException {
 
         // creating Path object by String path in filesystem
         startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
@@ -99,8 +99,19 @@ public class Controller {
 
                 // getting List of elements in selected MyTreeItem if it consists of them
                 MyTreeItem selectedItem = (MyTreeItem) newValue;
+//                selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+
                 selectedItem.setYetVisited(true);
-                selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
+                try {
+                    selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 Path p = (Path) selectedItem.getValue();
 /**
  * if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
@@ -109,7 +120,12 @@ public class Controller {
                 // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
                 if (Files.isDirectory(p)) {
                     // populating subMyTreeItems List in "p" - selected Directory
-                    List<MyTreeItem> subItemsList = new ItemPopulator(selectedItem).populate();
+                    List<MyTreeItem> subItemsList = null;
+                    try {
+                        subItemsList = new ItemPopulator(selectedItem).populate();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     // setting list of MyTreeItems to root Item
                     selectedItem.getChildren().addAll(subItemsList);
@@ -164,19 +180,15 @@ public class Controller {
     }
 
 
-    public void makeFolder(ActionEvent actionEvent) {
+    public void makeFolder(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"));
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Make new folder dialog");
         Scene addDialogScene;
-        try {
-            Parent addDialogRoot = (Parent) fxmlLoader.load();
-            addDialogScene = new Scene(addDialogRoot);
-            addDialogStage.setScene(addDialogScene);
-            addDialogStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent addDialogRoot = (Parent) fxmlLoader.load();
+        addDialogScene = new Scene(addDialogRoot);
+        addDialogStage.setScene(addDialogScene);
+        addDialogStage.show();
     }
 
     public void openFolder(ActionEvent actionEvent) {
@@ -228,29 +240,6 @@ public class Controller {
     }
 
     /**
-     * Method of recursive deleting to delete any files and folders even not empty.
-     * It works if you have anough privileges to work with these files.
-     *
-     * @param path
-     */
-    public void pathRecursiveDelete(Path path) {
-        File convertPath = path.toFile();
-        try {
-            if (!Files.isDirectory(convertPath.toPath())) {
-                convertPath.delete();
-            } else {
-                for (File ppp :
-                        convertPath.listFiles()) {
-                    pathRecursiveDelete(ppp.toPath());
-                }
-                Files.delete(path);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Mouse Single onClick event handler in table view (right side in application).
      * Using default system applications to open relevant files
      *
@@ -271,15 +260,36 @@ public class Controller {
 
     public void showJavaDoc(ActionEvent actionEvent) throws IOException {
         Parent javaDocDialogRoot = FXMLLoader.load(getClass().getResource("webViewJavadoc.fxml"));
-        javaDocDialogRoot.getStylesheets().add("caspian.css");
         Scene javaDocScene = new Scene(javaDocDialogRoot);
 
         Stage javadocDialogStage = new Stage();
-
         javadocDialogStage.setResizable(true);
         javadocDialogStage.setTitle("JavaDoc");
         javadocDialogStage.setScene(javaDocScene);
         javadocDialogStage.centerOnScreen();
         javadocDialogStage.show();
+    }
+
+    /**
+     * Method of recursive deleting to delete any files and folders even not empty.
+     * It works if you have anough privileges to work with these files.
+     *
+     * @param path
+     */
+    public void pathRecursiveDelete(Path path) {
+        File convertPath = path.toFile();
+        try {
+            if (!Files.isDirectory(convertPath.toPath())) {
+                convertPath.delete();
+            } else {
+                for (File ppp :
+                        convertPath.listFiles()) {
+                    pathRecursiveDelete(ppp.toPath());
+                }
+                Files.delete(path);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -33,7 +33,7 @@ public class ItemPopulator {
      *
      * @return
      */
-    public List<MyTreeItem> populate() {
+    public List<MyTreeItem> populate() throws InterruptedException {
         /**
          * creating MyTreeItems list using existing path.
          * In constructor.

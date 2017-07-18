@@ -12,11 +12,14 @@ public class WebViewController {
     @FXML
     private WebView vbView;
 
+    /**
+     * Initializing and show JavaDocs
+     */
     public void initialize() {
 
         vbView = new WebView();
-        WebEngine engine = vbView.getEngine();
-        engine.load(this.getClass().getResource("file:///D:/IdeaEEProj/testFX/src/JavaDocs/index.html").toExternalForm());
+        WebEngine webEngine = vbView.getEngine();
+        webEngine.load("file:///index.html");
 
     }
 }
