@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -165,7 +164,6 @@ public class Controller {
     }
 
 
-
     public void makeFolder(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"));
         Stage addDialogStage = new Stage();
@@ -216,7 +214,7 @@ public class Controller {
         aboutDialogStage.setTitle("Description program working");
         Scene aboutScene;
         try {
-            Parent addDialogRoot = (Parent) aboutLoader.load();
+            Parent addDialogRoot = aboutLoader.load();
             aboutScene = new Scene(addDialogRoot);
             aboutDialogStage.setScene(aboutScene);
             aboutDialogStage.show();
@@ -232,6 +230,7 @@ public class Controller {
     /**
      * Method of recursive deleting to delete any files and folders even not empty.
      * It works if you have anough privileges to work with these files.
+     *
      * @param path
      */
     public void pathRecursiveDelete(Path path) {
@@ -254,6 +253,7 @@ public class Controller {
     /**
      * Mouse Single onClick event handler in table view (right side in application).
      * Using default system applications to open relevant files
+     *
      * @param mouseEvent
      */
     public void openFileDeskInTable(MouseEvent mouseEvent) {
@@ -267,6 +267,21 @@ public class Controller {
     }
 
     public void openInDeskByClick(MouseEvent mouseEvent) {
+    }
 
+    public void showJavaDoc(ActionEvent actionEvent) {
+            FXMLLoader javaDocViewFXMLLoader = new FXMLLoader(getClass().getResource("webViewJavadoc.fxml"));
+        Stage javadocDialogStage = new Stage();
+        javadocDialogStage.setResizable(false);
+        javadocDialogStage.setTitle("JavaDoc");
+        Scene javaDocScene;
+        try {
+            Parent javaDocDialogRoot = javaDocViewFXMLLoader.load();
+            javaDocScene = new Scene(javaDocDialogRoot);
+            javadocDialogStage.setScene(javaDocScene);
+            javadocDialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
