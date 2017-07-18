@@ -26,6 +26,7 @@ public class AddDialogController {
     }
 
     public void modalWindowAddClose(ActionEvent actionEvent) {
+        Platform.exit();
 
     }
 }

@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,6 +36,8 @@ import java.util.List;
 
 public class Controller {
 
+    @FXML
+    public MenuItem mnHelpAbout;
     // Declaration needed variables
     @FXML
     private TreeView tvLeft;
@@ -207,14 +210,30 @@ public class Controller {
     }
 
     public void showAbout(ActionEvent actionEvent) {
-
+        FXMLLoader aboutLoader = new FXMLLoader(getClass().getResource("about.fxml"));
+        Stage aboutDialogStage = new Stage();
+        aboutDialogStage.setResizable(false);
+        aboutDialogStage.setTitle("Description programm working");
+        Scene aboutScene;
+        try {
+            Parent addDialogRoot = (Parent) aboutLoader.load();
+            aboutScene = new Scene(addDialogRoot);
+            aboutDialogStage.setScene(aboutScene);
+            aboutDialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void renameFile(ActionEvent actionEvent) {
 
     }
 
-    // ending deleting after close aapplication
+    /**
+     * Method of recursive deleting to delete any files and folders even not empty.
+     * It works if you have anough privileges to work with these files.
+     * @param path
+     */
     public void pathRecursiveDelete(Path path) {
         File convertPath = path.toFile();
         try {
@@ -231,13 +250,23 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Mouse Single onClick event handler in table view (right side in application).
+     * Using default system applications to open relevant files
+     * @param mouseEvent
+     */
     public void openFileDeskInTable(MouseEvent mouseEvent) {
-        Path selected = (Path) tableView.getSelectionModel().getSelectedItem();
+        Path selected = tableView.getSelectionModel().getSelectedItem();
         Desktop desktop = Desktop.getDesktop();
         try {
             desktop.open(selected.toFile());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void openInDeskByClick(MouseEvent mouseEvent) {
+
     }
 }
