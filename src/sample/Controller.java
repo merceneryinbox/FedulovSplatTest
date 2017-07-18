@@ -14,14 +14,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Callback;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -62,7 +64,7 @@ public class Controller {
 
 
     private List<Path> pathsOnDemandList;
-    private String nameOfStartPath = ".";
+    private String nameOfStartPath = "d:\\";
     private Path startPathInControl;
     private List<MyTreeItem> itemsListByPaths;
 
@@ -158,8 +160,8 @@ public class Controller {
     public void makeFolder(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"));
         Stage addDialogStage = new Stage();
-        addDialogStage.setTitle("Make new file dialog");
-        Scene addDialogScene ;
+        addDialogStage.setTitle("Make new folder dialog");
+        Scene addDialogScene;
         try {
             Parent addDialogRoot = (Parent) fxmlLoader.load();
             addDialogScene = new Scene(addDialogRoot);
@@ -174,8 +176,12 @@ public class Controller {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Folder Dialog");
         File file = fileChooser.showOpenDialog(null);
-        tableView.getItems().add(file.toPath());
-        tableView.refresh();
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.open(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void closeWindow(ActionEvent actionEvent) {
@@ -201,7 +207,8 @@ public class Controller {
     public void renameFile(ActionEvent actionEvent) {
 
     }
-// ending deleting after close aapplication
+
+    // ending deleting after close aapplication
     public void pathRecursiveDelete(Path path) {
         File convertPath = path.toFile();
         try {
