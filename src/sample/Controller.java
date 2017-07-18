@@ -4,12 +4,16 @@ import filebrowsertools.FulFillIcoByType;
 import filebrowsertools.ItemPopulator;
 import filebrowsertools.MyTreeItem;
 import filebrowsertools.StartPathGenerator;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -152,19 +156,30 @@ public class Controller {
 
 
     public void makeFolder(ActionEvent actionEvent) {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"));
+        Stage addDialogStage = new Stage();
+        addDialogStage.setTitle("Make new file dialog");
+        Scene addDialogScene ;
+        try {
+            Parent addDialogRoot = (Parent) fxmlLoader.load();
+            addDialogScene = new Scene(addDialogRoot);
+            addDialogStage.setScene(addDialogScene);
+            addDialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openFolder(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Create Folder Dialog");
+        fileChooser.setTitle("Open Folder Dialog");
         File file = fileChooser.showOpenDialog(null);
         tableView.getItems().add(file.toPath());
         tableView.refresh();
     }
 
     public void closeWindow(ActionEvent actionEvent) {
-            System.exit(0);
+        Platform.exit();
     }
 
     public void deleteFile(ActionEvent actionEvent) {
