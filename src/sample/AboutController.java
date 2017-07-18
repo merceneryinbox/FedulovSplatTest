@@ -18,7 +18,7 @@ public class AboutController {
 
     public void initialize() {
 
-        File aboutFile = new File("Description of programm");
+        File aboutFile = new File("Description of program");
         try {
             String s = "";
             BufferedReader br = new BufferedReader(new FileReader(aboutFile));

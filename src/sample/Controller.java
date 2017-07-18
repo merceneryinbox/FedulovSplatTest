@@ -207,23 +207,23 @@ public class Controller {
         }
     }
 
-    public void showAbout(ActionEvent actionEvent) {
+    public void showAbout(ActionEvent actionEvent) throws IOException {
         FXMLLoader aboutLoader = new FXMLLoader(getClass().getResource("about.fxml"));
+        Parent addDialogRoot = aboutLoader.load();
+
         Stage aboutDialogStage = new Stage();
         aboutDialogStage.setResizable(false);
         aboutDialogStage.setTitle("Description program working");
-        Scene aboutScene;
-        try {
-            Parent addDialogRoot = aboutLoader.load();
-            aboutScene = new Scene(addDialogRoot);
-            aboutDialogStage.setScene(aboutScene);
-            aboutDialogStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        Scene aboutScene = new Scene(addDialogRoot);
+
+        aboutDialogStage.setScene(aboutScene);
+        aboutDialogStage.show();
+
     }
 
     public void renameFile(ActionEvent actionEvent) {
+        tvLeft.getSelectionModel().getSelectedItem();
 
     }
 
@@ -269,19 +269,17 @@ public class Controller {
     public void openInDeskByClick(MouseEvent mouseEvent) {
     }
 
-    public void showJavaDoc(ActionEvent actionEvent) {
-            FXMLLoader javaDocViewFXMLLoader = new FXMLLoader(getClass().getResource("webViewJavadoc.fxml"));
+    public void showJavaDoc(ActionEvent actionEvent) throws IOException {
+        Parent javaDocDialogRoot = FXMLLoader.load(getClass().getResource("webViewJavadoc.fxml"));
+        javaDocDialogRoot.getStylesheets().add("caspian.css");
+        Scene javaDocScene = new Scene(javaDocDialogRoot);
+
         Stage javadocDialogStage = new Stage();
-        javadocDialogStage.setResizable(false);
+
+        javadocDialogStage.setResizable(true);
         javadocDialogStage.setTitle("JavaDoc");
-        Scene javaDocScene;
-        try {
-            Parent javaDocDialogRoot = javaDocViewFXMLLoader.load();
-            javaDocScene = new Scene(javaDocDialogRoot);
-            javadocDialogStage.setScene(javaDocScene);
-            javadocDialogStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        javadocDialogStage.setScene(javaDocScene);
+        javadocDialogStage.centerOnScreen();
+        javadocDialogStage.show();
     }
 }

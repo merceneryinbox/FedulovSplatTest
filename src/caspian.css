@@ -736,9 +736,6 @@
     -fx-underline: true;
 }
 
-.hyperlink:show-mnemonics > .mnemonic-underline {
-    -fx-stroke: -fx-text-fill;
-}
 
 
 /*******************************************************************************

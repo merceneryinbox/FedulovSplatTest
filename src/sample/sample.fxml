@@ -12,7 +12,7 @@
                     <items>
                         <AnchorPane minHeight="347.0" minWidth="158.0" prefHeight="347.0" prefWidth="158.0">
                             <children>
-                                <TreeView fx:id="tvLeft" editable="true" layoutY="25.0" minHeight="300.0" minWidth="200.0" onMouseClicked="#openInDeskByClick" prefHeight="370.0" prefWidth="158.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+                                <TreeView fx:id="tvLeft" editable="true" layoutY="25.0" minHeight="300.0" minWidth="200.0" onMouseClicked="#openInDeskByClick" prefHeight="370.0" prefWidth="300.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="300.0" minWidth="350.0" prefHeight="200.0" prefWidth="200.0">
