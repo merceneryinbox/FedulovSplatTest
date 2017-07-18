@@ -19,6 +19,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -86,7 +87,9 @@ public class Controller {
 
         // set root TreeItem at TreeView
         tvLeft.setRoot(rootItem);
+
         tvLeft.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
         // describe behavior of selected TreeItem in  TreeView and behavior of ListView if TreeItem is Selected
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -154,7 +157,10 @@ public class Controller {
                 return new SimpleStringProperty(String.valueOf(new SimpleDateFormat("dd.MM.yyyy  hh:mm:ss").format(c.getValue().toFile().lastModified())));
             }
         });
+
+//        tableView.getSelectionModel().selectedItemProperty().addListener(new MouseEvent());
     }
+
 
 
     public void makeFolder(ActionEvent actionEvent) {
@@ -221,6 +227,20 @@ public class Controller {
                 }
                 Files.delete(path);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openInDeskByClick(MouseEvent mouseEvent) {
+
+    }
+
+    public void openFileDeskInTable(MouseEvent mouseEvent) {
+        Path selected = (Path) tableView.getSelectionModel().getSelectedItem();
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.open(selected.toFile());
         } catch (IOException e) {
             e.printStackTrace();
         }
