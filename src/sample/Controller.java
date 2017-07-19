@@ -103,23 +103,37 @@ public class Controller {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 // Progress indicator initialize(2 seconds loading process) in separate thread not freeze application
-                progressIndicator.setVisible(true); // set indicator visible for two seconds
-                Task task = taskWorker(200);
-                progressIndicator.progressProperty().bind(task.progressProperty());
-                Thread thread = new Thread(task); // fork separate thread
-                thread.start();
+
 
                 // getting List of elements in selected MyTreeItem if it consists of them
                 MyTreeItem selectedItem = (MyTreeItem) newValue;
+                selectedItem.setYetVisited(true);
                 selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
 
-                selectedItem.setYetVisited(true);
+                MyTreeItem finalSelectedItem = selectedItem;
+                Thread fillingItemThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            progressIndicator.setVisible(true); // set indicator visible for two seconds
+                            Task task = taskWorker(200);
+                            progressIndicator.progressProperty().bind(task.progressProperty());
+                            Thread threadProgressIndicator = new Thread(task); // fork separate thread
+                            threadProgressIndicator.start();
+                            new FulFillIcoByType(finalSelectedItem).filInTheIconInMyTreeItem();
 
-                try {
-                    selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                fillingItemThread.start();
+
+//                try {
+//                    selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
                 Path p = (Path) selectedItem.getValue();
 /**
  * if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
