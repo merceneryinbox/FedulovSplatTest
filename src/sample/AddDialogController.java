@@ -47,17 +47,13 @@ public class AddDialogController {
             }
         }
 
-        // get a handle to the stage
         Stage stage = (Stage) okButton.getScene().getWindow();
-// do what you have to do
         stage.close();
 
     }
 
     public void modalWindowAddClose(ActionEvent actionEvent) {
-        // get a handle to the stage
         Stage stage = (Stage) okButton.getScene().getWindow();
-// do what you have to do
         stage.close();
     }
 }

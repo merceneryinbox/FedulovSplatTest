@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filebrowsertools/MyDirectoryWalk.java" afterPath="$PROJECT_DIR$/src/filebrowsertools/MyDirectoryWalk.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddDialogController.java" afterPath="$PROJECT_DIR$/src/sample/AddDialogController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -164,8 +163,8 @@
       <file leaf-file-name="AddDialogController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/AddDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+            <state relative-caret-position="226">
+              <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1023,12 +1022,12 @@
       <workItem from="1500082150991" duration="42679000" />
       <workItem from="1500315248611" duration="42598000" />
       <workItem from="1500408473904" duration="14392000" />
-      <workItem from="1500466215087" duration="11616000" />
+      <workItem from="1500466215087" duration="11846000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210212000" />
+    <option name="totallyTimeSpent" value="210442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -1728,8 +1727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AddDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+        <state relative-caret-position="226">
+          <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
