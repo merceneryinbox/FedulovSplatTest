@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/caspian.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/AddDialogController.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/AddDialogController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/Controller$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/Controller$2.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/Controller$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/Controller$3.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/Controller$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/Controller$4.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/Controller$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/testFX/sample/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" afterPath="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddDialogController.java" afterPath="$PROJECT_DIR$/src/sample/AddDialogController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -95,42 +82,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="15" column="55" lean-forward="false" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-              <folding>
-                <marker date="1500426882095" expanded="true" signature="1644:2738" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="1683:2700" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="1760:2700" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="2031:2660" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="2077:2615" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="2958:4442" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="2986:4415" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="3053:3528" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="3089:3496" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="3595:3960" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="3631:3928" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="4027:4386" ph="..." />
-                <marker date="1500426882095" expanded="true" signature="4063:4354" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="104" column="118" lean-forward="false" selection-start-line="104" selection-start-column="118" selection-end-line="104" selection-end-column="118" />
+            <state relative-caret-position="442">
+              <caret line="179" column="113" lean-forward="false" selection-start-line="179" selection-start-column="113" selection-end-line="179" selection-end-column="113" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6051#6531#0" expanded="true" />
-                <element signature="e#6530#6531#0" expanded="true" />
+                <element signature="e#6238#6817#0" expanded="true" />
+                <element signature="e#6816#6817#0" expanded="true" />
                 <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#openFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#deleteFile#0;class#Controller#0" expanded="false" />
@@ -930,12 +890,12 @@
       <workItem from="1500067484184" duration="6614000" />
       <workItem from="1500082150991" duration="42679000" />
       <workItem from="1500315248611" duration="42598000" />
-      <workItem from="1500408473904" duration="8557000" />
+      <workItem from="1500408473904" duration="9275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192761000" />
+    <option name="totallyTimeSpent" value="193479000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -951,7 +911,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25671142" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22147651" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09899329" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1005,7 +965,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>113</line>
+          <line>112</line>
           <properties />
           <option name="timeStamp" value="215" />
         </line-breakpoint>
@@ -1041,25 +1001,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>287</line>
+          <line>291</line>
           <properties />
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>288</line>
+          <line>292</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>289</line>
+          <line>293</line>
           <properties />
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>291</line>
+          <line>295</line>
           <properties />
           <option name="timeStamp" value="259" />
         </line-breakpoint>
@@ -1083,7 +1043,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>114</line>
+          <line>113</line>
           <properties />
           <option name="timeStamp" value="263" />
         </line-breakpoint>
@@ -1113,7 +1073,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>284</line>
+          <line>288</line>
           <properties class="sample.Controller" method="showJavaDoc">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1218,7 +1178,7 @@
         <state relative-caret-position="1054">
           <caret line="62" column="66" lean-forward="false" selection-start-line="62" selection-start-column="66" selection-end-line="62" selection-end-column="66" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="e#1185#1186#0" expanded="false" />
             <element signature="e#1241#1242#0" expanded="false" />
           </folding>
@@ -1409,17 +1369,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Description of programm" />
-    <entry file="file://$PROJECT_DIR$/src/sample/about.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AboutController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1485,31 +1434,42 @@
         <state relative-caret-position="204">
           <caret line="15" column="55" lean-forward="false" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
           <folding>
-            <marker date="1500426882095" expanded="true" signature="1644:2738" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="1683:2700" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="1760:2700" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="2031:2660" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="2077:2615" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="2958:4442" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="2986:4415" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="3053:3528" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="3089:3496" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="3595:3960" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="3631:3928" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="4027:4386" ph="..." />
-            <marker date="1500426882095" expanded="true" signature="4063:4354" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="1644:2738" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="1683:2700" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="1760:2700" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="2031:2660" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="2077:2615" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="2958:4312" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="2986:4285" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="3053:3528" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="3089:3496" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="3595:3960" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="3631:3928" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="4027:4256" ph="..." />
+            <marker date="1500427846015" expanded="true" signature="4063:4224" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/about.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="104" column="118" lean-forward="false" selection-start-line="104" selection-start-column="118" selection-end-line="104" selection-end-column="118" />
+        <state relative-caret-position="442">
+          <caret line="179" column="113" lean-forward="false" selection-start-line="179" selection-start-column="113" selection-end-line="179" selection-end-column="113" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6051#6531#0" expanded="true" />
-            <element signature="e#6530#6531#0" expanded="true" />
+            <element signature="e#6238#6817#0" expanded="true" />
+            <element signature="e#6816#6817#0" expanded="true" />
             <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#openFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteFile#0;class#Controller#0" expanded="false" />

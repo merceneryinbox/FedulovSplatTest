@@ -102,12 +102,11 @@ public class Controller {
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                // Progress indicator initialize(2 seconds loading process) in separate thread not freeze application 
-                progressIndicator.setVisible(true);
+                // Progress indicator initialize(2 seconds loading process) in separate thread not freeze application
+                progressIndicator.setVisible(true); // set indicator visible for two seconds
                 Task task = taskWorker(200);
-                progressIndicator.setVisible(false);
                 progressIndicator.progressProperty().bind(task.progressProperty());
-                Thread thread = new Thread(task);
+                Thread thread = new Thread(task); // fork separate thread
                 thread.start();
 
                 // getting List of elements in selected MyTreeItem if it consists of them
@@ -163,17 +162,22 @@ public class Controller {
                 }
             }
 
+            /**
+             * Start progress indicator filling by percents from 0 to 100 sharply in two seconds
+             * @param j
+             * @return
+             */
             private Task taskWorker(int j) {
                 return new Task() {
 
                     @Override
                     protected Object call() throws Exception {
-                        progressIndicator.setVisible(true);
+                        progressIndicator.setVisible(true); // set progress indicator visible for runtime
                         for (int i = 0; i < j; i++) {
                             updateProgress(i, j);
                             Thread.sleep(10);
                         }
-                        progressIndicator.setVisible(false);
+                        progressIndicator.setVisible(false); // setting progressindicator invisible after runtime
                         return true;
                     }
                 };

@@ -47,7 +47,6 @@
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
                                 <MenuItem fx:id="mnHelpAbout" mnemonicParsing="false" onAction="#showAbout" text="About" />
-                        <MenuItem fx:id="mnHelpAbout1" mnemonicParsing="false" onAction="#showJavaDoc" text="Look for JavaDoc" />
                             </items>
                         </Menu>
                     </menus>
