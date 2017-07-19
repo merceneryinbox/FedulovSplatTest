@@ -10,9 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/testFX_jar/testFX.jar" afterPath="$PROJECT_DIR$/out/artifacts/testFX_jar/testFX.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/filebrowsertools/FulFillIcoByType.class" afterPath="$PROJECT_DIR$/out/production/testFX/filebrowsertools/FulFillIcoByType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AddDialogController.java" afterPath="$PROJECT_DIR$/src/sample/AddDialogController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" afterPath="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java" afterPath="$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,13 +91,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="122" column="45" lean-forward="false" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6939#7518#0" expanded="true" />
+                <element signature="e#7517#7518#0" expanded="true" />
                 <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#openFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#deleteFile#0;class#Controller#0" expanded="false" />
@@ -113,8 +118,8 @@
       <file leaf-file-name="FulFillIcoByType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -123,8 +128,8 @@
       <file leaf-file-name="ItemPopulator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
+            <state relative-caret-position="282">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -142,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddDialogController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/AddDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+            <state relative-caret-position="200">
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -250,11 +255,11 @@
         <option value="$PROJECT_DIR$/Description of programm" />
         <option value="$PROJECT_DIR$/src/sample/AboutController.java" />
         <option value="$PROJECT_DIR$/src/sample/WebViewController.java" />
-        <option value="$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/AddDialogController.java" />
+        <option value="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" />
+        <option value="$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
@@ -890,12 +895,12 @@
       <workItem from="1500082150991" duration="42679000" />
       <workItem from="1500315248611" duration="42598000" />
       <workItem from="1500408473904" duration="14392000" />
-      <workItem from="1500466215087" duration="815000" />
+      <workItem from="1500466215087" duration="3285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199411000" />
+    <option name="totallyTimeSpent" value="201881000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -911,7 +916,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25671142" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2751678" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2080537" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1001,25 +1006,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>305</line>
+          <line>306</line>
           <properties />
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>306</line>
+          <line>307</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>307</line>
+          <line>308</line>
           <properties />
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>309</line>
+          <line>310</line>
           <properties />
           <option name="timeStamp" value="259" />
         </line-breakpoint>
@@ -1049,31 +1054,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java</url>
-          <line>67</line>
+          <line>61</line>
           <properties />
           <option name="timeStamp" value="265" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java</url>
-          <line>68</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="266" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java</url>
-          <line>69</line>
+          <line>63</line>
           <properties />
           <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java</url>
-          <line>70</line>
+          <line>64</line>
           <properties />
           <option name="timeStamp" value="268" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>302</line>
+          <line>303</line>
           <properties class="sample.Controller" method="showJavaDoc">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1367,22 +1372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1429,12 +1418,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/AddDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="122" column="45" lean-forward="false" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6939#7518#0" expanded="true" />
+            <element signature="e#7517#7518#0" expanded="true" />
             <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#openFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteFile#0;class#Controller#0" expanded="false" />
@@ -1446,14 +1461,6 @@
             <element signature="docComment;method#pathRecursiveDelete#0;class#Controller#0" expanded="false" />
             <element signature="method#pathRecursiveDelete#0;class#Controller#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/AddDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>

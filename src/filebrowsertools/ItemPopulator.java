@@ -2,6 +2,7 @@ package filebrowsertools;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public class ItemPopulator {
         this.item = item;
         path = (Path) item.getValue();
         listOfSubPaths = new NioFolderObserver(path).getSubPathsList();
+        Collections.sort(listOfSubPaths);
     }
 
     /**

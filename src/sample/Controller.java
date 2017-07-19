@@ -120,6 +120,7 @@ public class Controller {
                             progressIndicator.progressProperty().bind(task.progressProperty());
                             Thread threadProgressIndicator = new Thread(task); // fork separate thread
                             threadProgressIndicator.start();
+                            Thread.sleep(1000);
                             new FulFillIcoByType(finalSelectedItem).filInTheIconInMyTreeItem();
 
                         } catch (InterruptedException e) {

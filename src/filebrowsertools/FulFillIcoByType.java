@@ -59,24 +59,18 @@ public class FulFillIcoByType {
         switch (test) {
             case "folder":
                 if (resultTreeItem.isYetVisited() == true) {
-//                    String imageFolderOpenFrefresh = "icoes/refresh.gif";
-//                    Image imgOpenFolderrefresh = new Image(imageFolderOpenFrefresh);
-//                    ImageView iconOpenFolderrefresh = new ImageView(imgOpenFolderrefresh);
-//                    resultTreeItem.setGraphic(iconOpenFolderrefresh);
-
-//                    break;
                     String imageFolderOpenF = "icoes\\folder_opened.png";
                     Image imgOpenFolder = new Image(imageFolderOpenF);
                     ImageView iconOpenFolder = new ImageView(imgOpenFolder);
                     resultTreeItem.setGraphic(iconOpenFolder);
                     break;
                 } else if (resultTreeItem.isYetVisited() == false) {
-                String imageFolderCloseF = "icoes\\folder_closed.png";
-                Image imgClosedFolder = new Image(imageFolderCloseF);
-                ImageView iconClosedFolder = new ImageView(imgClosedFolder);
-                resultTreeItem.setGraphic(iconClosedFolder);
-                break;
-            }
+                    String imageFolderCloseF = "icoes\\folder_closed.png";
+                    Image imgClosedFolder = new Image(imageFolderCloseF);
+                    ImageView iconClosedFolder = new ImageView(imgClosedFolder);
+                    resultTreeItem.setGraphic(iconClosedFolder);
+                    break;
+                }
             case "archive":
                 String imageArchiveFile = "icoes\\archive.png";
                 Image imgArchiveFile = new Image(imageArchiveFile);
