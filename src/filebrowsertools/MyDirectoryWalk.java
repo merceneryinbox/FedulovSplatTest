@@ -33,7 +33,7 @@ public class MyDirectoryWalk extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-        list.add(file);
+//        list.add(file);
         return FileVisitResult.TERMINATE;
     }
 }
