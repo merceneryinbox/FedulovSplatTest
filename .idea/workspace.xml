@@ -10,11 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/testFX_jar/testFX.jar" afterPath="$PROJECT_DIR$/out/artifacts/testFX_jar/testFX.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/testFX/filebrowsertools/FulFillIcoByType.class" afterPath="$PROJECT_DIR$/out/production/testFX/filebrowsertools/FulFillIcoByType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" afterPath="$PROJECT_DIR$/src/filebrowsertools/FulFillIcoByType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java" afterPath="$PROJECT_DIR$/src/filebrowsertools/ItemPopulator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -94,12 +89,12 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="122" column="45" lean-forward="false" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+            <state relative-caret-position="136">
+              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6939#7518#0" expanded="true" />
-                <element signature="e#7517#7518#0" expanded="true" />
+                <element signature="e#6819#7398#0" expanded="true" />
+                <element signature="e#7397#7398#0" expanded="true" />
                 <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#openFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#deleteFile#0;class#Controller#0" expanded="false" />
@@ -895,12 +890,12 @@
       <workItem from="1500082150991" duration="42679000" />
       <workItem from="1500315248611" duration="42598000" />
       <workItem from="1500408473904" duration="14392000" />
-      <workItem from="1500466215087" duration="3285000" />
+      <workItem from="1500466215087" duration="3884000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201881000" />
+    <option name="totallyTimeSpent" value="202480000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -970,7 +965,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>108</line>
+          <line>105</line>
           <properties />
           <option name="timeStamp" value="215" />
         </line-breakpoint>
@@ -1006,25 +1001,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>306</line>
+          <line>303</line>
           <properties />
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>307</line>
+          <line>304</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>308</line>
+          <line>305</line>
           <properties />
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>310</line>
+          <line>307</line>
           <properties />
           <option name="timeStamp" value="259" />
         </line-breakpoint>
@@ -1048,7 +1043,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>110</line>
+          <line>107</line>
           <properties />
           <option name="timeStamp" value="263" />
         </line-breakpoint>
@@ -1078,7 +1073,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>303</line>
+          <line>300</line>
           <properties class="sample.Controller" method="showJavaDoc">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1444,12 +1439,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="122" column="45" lean-forward="false" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+        <state relative-caret-position="136">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6939#7518#0" expanded="true" />
-            <element signature="e#7517#7518#0" expanded="true" />
+            <element signature="e#6819#7398#0" expanded="true" />
+            <element signature="e#7397#7398#0" expanded="true" />
             <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#openFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteFile#0;class#Controller#0" expanded="false" />

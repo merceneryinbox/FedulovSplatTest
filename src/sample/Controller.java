@@ -102,9 +102,6 @@ public class Controller {
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                // Progress indicator initialize(2 seconds loading process) in separate thread not freeze application
-
-
                 // getting List of elements in selected MyTreeItem if it consists of them
                 MyTreeItem selectedItem = (MyTreeItem) newValue;
                 selectedItem.setYetVisited(true);
