@@ -122,6 +122,7 @@ public class Controller {
 //                            progressIndicator.setVisible(true); // set indicator visible for two seconds
                             Task task = taskWorker(200);
                             progressIndicator.progressProperty().bind(task.progressProperty());
+
                             Thread threadProgressIndicator = new Thread(task); // fork separate thread
                             threadProgressIndicator.start();
                             Thread.sleep(1000);
