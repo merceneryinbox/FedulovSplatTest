@@ -59,13 +59,12 @@ public class FulFillIcoByType {
         switch (test) {
             case "folder":
                 if (resultTreeItem.isYetVisited() == true) {
-                    String imageFolderOpenFrefresh = "icoes/refresh.gif";
-                    Image imgOpenFolderrefresh = new Image(imageFolderOpenFrefresh);
-                    ImageView iconOpenFolderrefresh = new ImageView(imgOpenFolderrefresh);
-                    resultTreeItem.setGraphic(iconOpenFolderrefresh);
+//                    String imageFolderOpenFrefresh = "icoes/refresh.gif";
+//                    Image imgOpenFolderrefresh = new Image(imageFolderOpenFrefresh);
+//                    ImageView iconOpenFolderrefresh = new ImageView(imgOpenFolderrefresh);
+//                    resultTreeItem.setGraphic(iconOpenFolderrefresh);
 
-                    Thread.sleep(1000);
-
+//                    break;
                     String imageFolderOpenF = "icoes\\folder_opened.png";
                     Image imgOpenFolder = new Image(imageFolderOpenF);
                     ImageView iconOpenFolder = new ImageView(imgOpenFolder);

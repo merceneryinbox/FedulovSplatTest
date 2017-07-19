@@ -22,11 +22,11 @@ public class AddDialogController {
     public void modalWindowAddFolder(ActionEvent actionEvent) throws IOException {
         File file = new File(inptTxtInAddingDialog.getText());
         file.mkdirs();
-        Platform.exit();
+        //        Platform.exit();
+
     }
 
     public void modalWindowAddClose(ActionEvent actionEvent) {
         Platform.exit();
-
     }
 }

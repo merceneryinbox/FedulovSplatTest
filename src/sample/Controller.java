@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -37,7 +39,10 @@ public class Controller {
 
     @FXML
     public MenuItem mnHelpAbout;
-    // Declaration needed variables
+
+    @FXML
+    public ProgressIndicator progressIndicator;
+
     @FXML
     private TreeView tvLeft;
 
@@ -52,8 +57,8 @@ public class Controller {
 
     @FXML
     private TableColumn<Path, String> tableViewDate;
-    @FXML
 
+    @FXML
     private MenuBar menuBar;
 
     @FXML
@@ -65,7 +70,7 @@ public class Controller {
     @FXML
     private MenuItem mnFileClose;
 
-
+    private int counter = 0;
     private List<Path> pathsOnDemandList;
     private String nameOfStartPath = "d:\\";
     private Path startPathInControl;
@@ -73,6 +78,7 @@ public class Controller {
 
     // Start Controller initialization block
     public void initialize() throws InterruptedException {
+        progressIndicator.setVisible(false);
 
         // creating Path object by String path in filesystem
         startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
@@ -96,17 +102,20 @@ public class Controller {
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                // Progress indicator initialize(2 seconds loading process) in separate thread not freeze application 
+                progressIndicator.setVisible(true);
+                Task task = taskWorker(200);
+                progressIndicator.setVisible(false);
+                progressIndicator.progressProperty().bind(task.progressProperty());
+                Thread thread = new Thread(task);
+                thread.start();
 
                 // getting List of elements in selected MyTreeItem if it consists of them
                 MyTreeItem selectedItem = (MyTreeItem) newValue;
-//                selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+                selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
 
                 selectedItem.setYetVisited(true);
+
                 try {
                     selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
                 } catch (InterruptedException e) {
@@ -116,10 +125,13 @@ public class Controller {
 /**
  * if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
  */
+
+
                 List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
                 // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
                 if (Files.isDirectory(p)) {
-                    // populating subMyTreeItems List in "p" - selected Directory
+
+                    // Populating subMyTreeItems List in "p" - selected Directory
                     List<MyTreeItem> subItemsList = null;
                     try {
                         subItemsList = new ItemPopulator(selectedItem).populate();
@@ -138,7 +150,6 @@ public class Controller {
 
                     // setting sub MyTreeItems in selected parent Paths onto right TableView
                     tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
-
                     // refreshing tableView
                     tableView.refresh();
 
@@ -150,6 +161,22 @@ public class Controller {
                     // refreshing tableView
                     tableView.refresh();
                 }
+            }
+
+            private Task taskWorker(int j) {
+                return new Task() {
+
+                    @Override
+                    protected Object call() throws Exception {
+                        progressIndicator.setVisible(true);
+                        for (int i = 0; i < j; i++) {
+                            updateProgress(i, j);
+                            Thread.sleep(10);
+                        }
+                        progressIndicator.setVisible(false);
+                        return true;
+                    }
+                };
             }
         });
 
@@ -184,9 +211,9 @@ public class Controller {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"));
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Make new folder dialog");
-        Scene addDialogScene;
-        Parent addDialogRoot = (Parent) fxmlLoader.load();
-        addDialogScene = new Scene(addDialogRoot);
+        addDialogStage.initModality(Modality.APPLICATION_MODAL);
+        Parent addDialogRoot = fxmlLoader.load();
+        Scene addDialogScene = new Scene(addDialogRoot);
         addDialogStage.setScene(addDialogScene);
         addDialogStage.show();
     }
@@ -210,7 +237,6 @@ public class Controller {
     public void deleteFile(ActionEvent actionEvent) {
         MyTreeItem selectedToDelete = (MyTreeItem) tvLeft.getSelectionModel().getSelectedItem();
         Path pp = (Path) selectedToDelete.getValue();
-        File f = pp.toFile();
         MyTreeItem parentOfselectedToDelete = (MyTreeItem) selectedToDelete.getParent();
         if (parentOfselectedToDelete != null) {
             parentOfselectedToDelete.getChildren().remove(selectedToDelete);
@@ -222,13 +248,11 @@ public class Controller {
     public void showAbout(ActionEvent actionEvent) throws IOException {
         FXMLLoader aboutLoader = new FXMLLoader(getClass().getResource("about.fxml"));
         Parent addDialogRoot = aboutLoader.load();
-
         Stage aboutDialogStage = new Stage();
         aboutDialogStage.setResizable(false);
         aboutDialogStage.setTitle("Description program working");
-
+        aboutDialogStage.initModality(Modality.APPLICATION_MODAL);
         Scene aboutScene = new Scene(addDialogRoot);
-
         aboutDialogStage.setScene(aboutScene);
         aboutDialogStage.show();
 
@@ -261,10 +285,10 @@ public class Controller {
     public void showJavaDoc(ActionEvent actionEvent) throws IOException {
         Parent javaDocDialogRoot = FXMLLoader.load(getClass().getResource("webViewJavadoc.fxml"));
         Scene javaDocScene = new Scene(javaDocDialogRoot);
-
         Stage javadocDialogStage = new Stage();
         javadocDialogStage.setResizable(true);
         javadocDialogStage.setTitle("JavaDoc");
+        javadocDialogStage.initModality(Modality.APPLICATION_MODAL);
         javadocDialogStage.setScene(javaDocScene);
         javadocDialogStage.centerOnScreen();
         javadocDialogStage.show();
@@ -292,4 +316,13 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+    public int counting() throws InterruptedException {
+        for (int i = 0; i < 100; i++) {
+            counter = i++;
+            Thread.sleep(10);
+        }
+        return counter;
+    }
+
 }
