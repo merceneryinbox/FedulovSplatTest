@@ -26,6 +26,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.management.ObjectName;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +34,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Controller {
@@ -79,7 +82,7 @@ public class Controller {
     // Start Controller initialization block
     public void initialize() throws InterruptedException {
         progressIndicator.setVisible(false);
-
+        itemsListByPaths = new ArrayList<>();
         // creating Path object by String path in filesystem
         startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
 
@@ -89,7 +92,12 @@ public class Controller {
         rootItem.setGraphic(new ImageView(new Image("icoes\\folder_opened.png")));
         // getting MyTreeItemList of sub items in start directory
         itemsListByPaths = new ItemPopulator(rootItem).populate();
-
+        Collections.sort(itemsListByPaths, new Comparator<MyTreeItem>() {
+            @Override
+            public int compare(MyTreeItem o1, MyTreeItem o2) {
+                return o1.getValue().toString().compareTo(o2.toString());
+            }
+        });
         // set up all subitems at root
         rootItem.getChildren().addAll(itemsListByPaths);
 
