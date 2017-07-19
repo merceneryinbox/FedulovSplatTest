@@ -98,7 +98,7 @@ public class Controller {
 
         tvLeft.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        // describe behavior of selected TreeItem in  TreeView and behavior of ListView if TreeItem is Selected
+        // describe behavior of selected TreeItem in  TreeView and behavior of TableView if TreeItem is Selected
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -107,38 +107,30 @@ public class Controller {
                 selectedItem.setYetVisited(true);
                 selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
 
-                MyTreeItem finalSelectedItem = selectedItem;
                 Thread fillingItemThread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            progressIndicator.setVisible(true); // set indicator visible for two seconds
+//                            progressIndicator.setVisible(true); // set indicator visible for two seconds
                             Task task = taskWorker(200);
                             progressIndicator.progressProperty().bind(task.progressProperty());
                             Thread threadProgressIndicator = new Thread(task); // fork separate thread
                             threadProgressIndicator.start();
                             Thread.sleep(1000);
-                            new FulFillIcoByType(finalSelectedItem).filInTheIconInMyTreeItem();
-
+                            new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
                 });
                 fillingItemThread.start();
-
-//                try {
-//                    selectedItem = new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
                 Path p = (Path) selectedItem.getValue();
 /**
  * if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
  */
 
-
                 List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
+
                 // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
                 if (Files.isDirectory(p)) {
 
