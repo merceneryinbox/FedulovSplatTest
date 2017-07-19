@@ -2,10 +2,12 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -29,6 +31,13 @@ public class AddDialogController {
             Path path = Paths.get(filename);
             try {
                 Files.createDirectory(path);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Hello World!");
+                alert.setHeaderText(null);
+                alert.setContentText("You just create folder " + filename + " in " + (new File(".")).getAbsolutePath());
+                alert.showAndWait();
+
             } catch (FileAlreadyExistsException e) {
                 // the directory already exists.
             } catch (IOException e) {
@@ -37,8 +46,16 @@ public class AddDialogController {
             }
         } else {
             Path path = Paths.get(filename);
+
             try {
                 Files.createFile(path);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Hello World!");
+                alert.setHeaderText(null);
+                alert.setContentText("You just create file " + filename + " in " + (new File(".")).getAbsolutePath());
+                alert.showAndWait();
+
             } catch (FileAlreadyExistsException e) {
                 // the directory already exists.
             } catch (IOException e) {
