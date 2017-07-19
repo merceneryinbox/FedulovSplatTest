@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +23,17 @@ public class AddDialogController {
     public void modalWindowAddFolder(ActionEvent actionEvent) throws IOException {
         File file = new File(inptTxtInAddingDialog.getText());
         file.mkdirs();
-        //        Platform.exit();
+        // get a handle to the stage
+        Stage stage = (Stage) okButton.getScene().getWindow();
+// do what you have to do
+        stage.close();
 
     }
 
     public void modalWindowAddClose(ActionEvent actionEvent) {
-        Platform.exit();
+        // get a handle to the stage
+        Stage stage = (Stage) okButton.getScene().getWindow();
+// do what you have to do
+        stage.close();
     }
 }
