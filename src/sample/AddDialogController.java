@@ -27,7 +27,7 @@ public class AddDialogController {
     public void modalWindowAddFolder(ActionEvent actionEvent) throws IOException {
         String filename = inptTxtInAddingDialog.getText();
 
-        if (!filename.contains(".")) {
+        if (!filename.contains(".")) { // create folder but not file
             Path path = Paths.get(filename);
             try {
                 Files.createDirectory(path);
@@ -48,7 +48,7 @@ public class AddDialogController {
             Path path = Paths.get(filename);
 
             try {
-                Files.createFile(path);
+                Files.createFile(path); // create file but not folder
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Hello World!");
