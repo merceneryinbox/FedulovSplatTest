@@ -42,6 +42,7 @@ import java.util.List;
 
 public class Controller {
 
+    private Controller renameController;
     private MyTreeItem selectedTreeItem;
     private MyTreeItem parentOfSelectedTreeItem;
 
@@ -240,9 +241,16 @@ public class Controller {
 //        tableView.getSelectionModel().selectedItemProperty().addListener(new MouseEvent());
     }
 
+    /**
+     * Create path  Menu File -> New
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
 
     public void makeFolder(ActionEvent actionEvent) throws IOException {
-        Scene addDialogScene = new Scene((new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"))).load());
+        Scene addDialogScene;
+        addDialogScene = new Scene((new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"))).load());
 
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Make new folder dialog");
@@ -251,6 +259,11 @@ public class Controller {
         addDialogStage.show();
     }
 
+    /**
+     * Open file in with fileChooser invoke by Menu File-> Open
+     *
+     * @param actionEvent
+     */
     public void openFolder(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Folder Dialog");
@@ -263,10 +276,20 @@ public class Controller {
         }
     }
 
+    /**
+     * Close window invoke by Menu File-> Close
+     *
+     * @param actionEvent
+     */
     public void closeWindow(ActionEvent actionEvent) {
         Platform.exit();
     }
 
+    /**
+     * Delete selected path in filesystem and delete selected MyTreeItem in TreeView invoke by Menu Edit -> Delete
+     *
+     * @param actionEvent
+     */
     public void deleteFile(ActionEvent actionEvent) {
         MyTreeItem selectedToDelete = (MyTreeItem) tvLeft.getSelectionModel().getSelectedItem();
         Path pp = (Path) selectedToDelete.getValue();
@@ -277,6 +300,13 @@ public class Controller {
             pathRecursiveDelete(pp);
         }
     }
+
+    /**
+     * Show about description of this programm invoke by Menu Help -> About
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
 
     public void showAbout(ActionEvent actionEvent) throws IOException {
         FXMLLoader aboutLoader = new FXMLLoader(getClass().getResource("about.fxml"));
@@ -292,12 +322,22 @@ public class Controller {
     }
 
     ////////
+
+    /**
+     * Invoke rename method to rename selected MyTreeItem element in TreeView and relevant path in file system
+     * by clicking on Menu Edit -> Rename
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void renameFileInSample(ActionEvent actionEvent) throws IOException {
+        FXMLLoader renameRoot = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
+// !!!!!!!!!!                                                                                           // !!!!!!!!!!!!!!!!!!!!!!!!
+       Scene renameDialogScene = renameRoot.load(); //  java.lang.IllegalArgumentException
+
         Path pp = (Path) selectedTreeItem.getValue();
         String startName = pp.toString();
-        txtRenameFld = new TextField(startName);
-
-        Scene renameDialogScene = new Scene((new FXMLLoader(getClass().getResource("RenameDialog.fxml"))).load());
+        txtRenameFld.setText(startName);
 
         Stage renameDialogStage = new Stage();
         renameDialogStage.setScene(renameDialogScene);
@@ -306,13 +346,19 @@ public class Controller {
         renameDialogStage.show();
     }
 
+    /**
+     * @param actionEvent
+     * @throws IOException
+     */
     public void renameFile(ActionEvent actionEvent) throws IOException {
-
+        Stage stage = (Stage) okRenameButton.getScene().getWindow();
+        stage.close();
     }
 ///////
 
     public void cancelRename(ActionEvent actionEvent) {
-
+        Stage stage = (Stage) cancelRenameButton.getScene().getWindow();
+        stage.close();
     }
 
     /**
