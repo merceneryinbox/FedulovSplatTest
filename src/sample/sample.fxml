@@ -41,7 +41,7 @@
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
                                 <MenuItem fx:id="mnEditDelete" mnemonicParsing="false" onAction="#deleteFile" text="Delete" />
-                                <MenuItem fx:id="mnEditDeleteRename" mnemonicParsing="false" onAction="#renameFile" text="Rename" />
+                                <MenuItem fx:id="mnEditDeleteRename" mnemonicParsing="false" onAction="#renameFileInSample" text="Rename" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">

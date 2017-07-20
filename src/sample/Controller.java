@@ -15,18 +15,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import javax.management.ObjectName;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -40,38 +42,44 @@ import java.util.List;
 
 public class Controller {
 
-    @FXML
-    public MenuItem mnHelpAbout;
+    private MyTreeItem selectedTreeItem;
+    private MyTreeItem parentOfSelectedTreeItem;
 
     @FXML
-    public ProgressIndicator progressIndicator;
+    private MenuItem mnHelpAbout;
+
+    @FXML
+    private ProgressIndicator progressIndicator;
+
+    @FXML
+    private TextField txtRenameFld;
+    @FXML
+    private Button okRenameButton;
+    @FXML
+    private Button cancelRenameButton;
+    @FXML
+    private HBox okRenameParent;
 
     @FXML
     private TreeView tvLeft;
-
     @FXML
     private TableView<Path> tableView;
-
     @FXML
     private TableColumn<Path, String> tableViewName;
-
     @FXML
     private TableColumn<Path, String> tableViewSize;
-
     @FXML
     private TableColumn<Path, String> tableViewDate;
 
     @FXML
     private MenuBar menuBar;
-
     @FXML
     private MenuItem mnFileNew;
-
     @FXML
     private MenuItem mnFileOpen;
-
     @FXML
     private MenuItem mnFileClose;
+
 
     private int counter = 0;
     private List<Path> pathsOnDemandList;
@@ -83,6 +91,7 @@ public class Controller {
     public void initialize() throws InterruptedException {
         progressIndicator.setVisible(false);
         itemsListByPaths = new ArrayList<>();
+
         // creating Path object by String path in filesystem
         startPathInControl = new StartPathGenerator(nameOfStartPath).generatePath();
 
@@ -90,7 +99,8 @@ public class Controller {
         MyTreeItem rootItem = new MyTreeItem(startPathInControl);
         rootItem.setExpanded(true);
         rootItem.setGraphic(new ImageView(new Image("icoes\\folder_opened.png")));
-        // getting MyTreeItemList of sub items in start directory
+
+        // getting sorted MyTreeItemList of sub items in start directory
         itemsListByPaths = new ItemPopulator(rootItem).populate();
         Collections.sort(itemsListByPaths, new Comparator<MyTreeItem>() {
             @Override
@@ -104,20 +114,32 @@ public class Controller {
         // set root TreeItem at TreeView
         tvLeft.setRoot(rootItem);
 
+        // set single selection mode et MyTreeItem
         tvLeft.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        // describe behavior of selected TreeItem in  TreeView and behavior of TableView if TreeItem is Selected
+        // describe behavior of selected TreeItem in TreeView and behavior of TableView if TreeItem is Selected
         tvLeft.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+
                 // getting List of elements in selected MyTreeItem if it consists of them
+                selectedTreeItem = (MyTreeItem) newValue; // for outbound methods use
+                parentOfSelectedTreeItem = (MyTreeItem) selectedTreeItem.getParent(); //....
+
+                // getting variables for internal use
                 MyTreeItem selectedItem = (MyTreeItem) newValue;
+                Path p = (Path) selectedItem.getValue();
                 selectedItem.setYetVisited(true);
                 selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
 
                 Thread fillingItemThread = new Thread(new Runnable() {
+                    /**
+                     * Run method in Listener
+                     */
                     @Override
                     public void run() {
+                        // progress indicator init
                         try {
 //                            progressIndicator.setVisible(true); // set indicator visible for two seconds
                             Task task = taskWorker(200);
@@ -132,11 +154,7 @@ public class Controller {
                         }
                     }
                 });
-                fillingItemThread.start();
-                Path p = (Path) selectedItem.getValue();
-/**
- * if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
- */
+                fillingItemThread.start(); // start progress indicator thread
 
                 List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
 
@@ -154,7 +172,7 @@ public class Controller {
                     // setting list of MyTreeItems to root Item
                     selectedItem.getChildren().addAll(subItemsList);
 
-                    // populate list of sub MyTreeItems
+                    // populate list of sub MyTreeItems's paths
                     for (MyTreeItem mt :
                             subItemsList) {
                         pathListOfMyTreeItemsInListener.add((Path) mt.getValue());
@@ -165,7 +183,7 @@ public class Controller {
                     // refreshing tableView
                     tableView.refresh();
 
-                    // else if path is a file creating list of ine single element and pass it in table view
+                    // else if path is a file creating list of one single element and pass it in table view
                 } else {
                     pathListOfMyTreeItemsInListener.add(((Path) selectedItem.getValue()));
                     tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
@@ -197,8 +215,7 @@ public class Controller {
             }
         });
 
-
-//populate columns in table by values from pathinTable
+        //populate columns in table by values from pathinTable
         tableViewName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Path, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Path, String> c) {
@@ -225,12 +242,11 @@ public class Controller {
 
 
     public void makeFolder(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"));
+        Scene addDialogScene = new Scene((new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"))).load());
+
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Make new folder dialog");
         addDialogStage.initModality(Modality.APPLICATION_MODAL);
-        Parent addDialogRoot = fxmlLoader.load();
-        Scene addDialogScene = new Scene(addDialogRoot);
         addDialogStage.setScene(addDialogScene);
         addDialogStage.show();
     }
@@ -275,8 +291,27 @@ public class Controller {
 
     }
 
-    public void renameFile(ActionEvent actionEvent) {
-        tvLeft.getSelectionModel().getSelectedItem();
+    ////////
+    public void renameFileInSample(ActionEvent actionEvent) throws IOException {
+        Path pp = (Path) selectedTreeItem.getValue();
+        String startName = pp.toString();
+        txtRenameFld = new TextField(startName);
+
+        Scene renameDialogScene = new Scene((new FXMLLoader(getClass().getResource("RenameDialog.fxml"))).load());
+
+        Stage renameDialogStage = new Stage();
+        renameDialogStage.setScene(renameDialogScene);
+        renameDialogStage.setTitle("Rename file dialog");
+        renameDialogStage.initModality(Modality.APPLICATION_MODAL);
+        renameDialogStage.show();
+    }
+
+    public void renameFile(ActionEvent actionEvent) throws IOException {
+
+    }
+///////
+
+    public void cancelRename(ActionEvent actionEvent) {
 
     }
 
@@ -334,6 +369,7 @@ public class Controller {
         }
     }
 
+
     public int counting() throws InterruptedException {
         for (int i = 0; i < 100; i++) {
             counter = i++;
@@ -341,5 +377,6 @@ public class Controller {
         }
         return counter;
     }
+
 
 }
