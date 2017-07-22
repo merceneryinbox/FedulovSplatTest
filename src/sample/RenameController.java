@@ -28,14 +28,12 @@ public class RenameController {
     private String oldName;
     private String newName;
     private Path oldSelectedPath;
-    private Path newSelectedPath;
-    private FileSystem fs;
 
     public void initialize() {
         oldName = (((MyTreeItem) selectedTreeItem).getValue()).toString();
-        fs = FileSystems.getDefault();
-        oldSelectedPath = fs.getPath(oldName);
         txtRenameFld.setText(oldName);
+
+        oldSelectedPath = (Path)(selectedTreeItem).getValue();
     }
 
 
@@ -43,7 +41,7 @@ public class RenameController {
         newName = txtRenameFld.getText();
         Files.copy(oldSelectedPath, (Paths.get(newName)));
         Files.delete(oldSelectedPath);
-        
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Hello World!");
         alert.setHeaderText("Info");
