@@ -42,9 +42,8 @@ import java.util.List;
 
 public class Controller {
 
-    private Controller renameController;
-    private MyTreeItem selectedTreeItem;
-    private MyTreeItem parentOfSelectedTreeItem;
+    public static MyTreeItem selectedTreeItem;
+    private static MyTreeItem parentOfSelectedTreeItem;
 
     @FXML
     private MenuItem mnHelpAbout;
@@ -125,7 +124,7 @@ public class Controller {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 
                 // getting List of elements in selected MyTreeItem if it consists of them
-                selectedTreeItem = (MyTreeItem) newValue; // for outbound methods use
+                selectedTreeItem = (MyTreeItem) newValue; // for outbound methods using
                 parentOfSelectedTreeItem = (MyTreeItem) selectedTreeItem.getParent(); //....
 
                 // getting variables for internal use
@@ -249,8 +248,7 @@ public class Controller {
      */
 
     public void makeFolder(ActionEvent actionEvent) throws IOException {
-        Scene addDialogScene;
-        addDialogScene = new Scene((new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"))).load());
+        Scene addDialogScene = new Scene((new FXMLLoader(getClass().getResource("AlertDialog_css.fxml"))).load());
 
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Make new folder dialog");
@@ -331,13 +329,8 @@ public class Controller {
      * @throws IOException
      */
     public void renameFileInSample(ActionEvent actionEvent) throws IOException {
-        FXMLLoader renameRoot = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
-// !!!!!!!!!!                                                                                           // !!!!!!!!!!!!!!!!!!!!!!!!
-       Scene renameDialogScene = renameRoot.load(); //  java.lang.IllegalArgumentException
-
-        Path pp = (Path) selectedTreeItem.getValue();
-        String startName = pp.toString();
-        txtRenameFld.setText(startName);
+// !!!!!!!!!!
+       Scene renameDialogScene = new Scene((new FXMLLoader(getClass().getResource("RenameCustom.fxml"))).load()); //  java.lang.IllegalArgumentException
 
         Stage renameDialogStage = new Stage();
         renameDialogStage.setScene(renameDialogScene);

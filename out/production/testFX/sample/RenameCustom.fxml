@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="93.0" prefWidth="572.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="93.0" prefWidth="572.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RenameController">
    <children>
       <Button fx:id="okRenameParent" layoutX="484.0" layoutY="56.0" mnemonicParsing="false" onAction="#renameFile" text="Rename" />
       <ImageView fitHeight="70.0" fitWidth="91.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
