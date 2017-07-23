@@ -15,15 +15,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,8 +31,7 @@ import javafx.util.Callback;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,22 +42,25 @@ public class Controller {
 
     public static MyTreeItem selectedTreeItem;
     private static MyTreeItem parentOfSelectedTreeItem;
-
+    /////////////// RENAME DIALOG
+    @FXML
+    public Button okRenameParent;
+    @FXML
+    public TextField txtRenameFld;
+    @FXML
+    public Button cancelRenameButton;
+    Stage renameDialogStage = new Stage();
+    ////////////
     @FXML
     private MenuItem mnHelpAbout;
-
+    //////////////
     @FXML
     private ProgressIndicator progressIndicator;
+    private String oldName;
+    private String newName;
+    private Path oldSelectedPath;
 
-    @FXML
-    private TextField txtRenameFld;
-    @FXML
-    private Button okRenameButton;
-    @FXML
-    private Button cancelRenameButton;
-    @FXML
-    private HBox okRenameParent;
-
+    /////////////////TREEVIEW
     @FXML
     private TreeView tvLeft;
     @FXML
@@ -70,7 +71,7 @@ public class Controller {
     private TableColumn<Path, String> tableViewSize;
     @FXML
     private TableColumn<Path, String> tableViewDate;
-
+    ///////// MAIN MENU VARS
     @FXML
     private MenuBar menuBar;
     @FXML
@@ -80,7 +81,7 @@ public class Controller {
     @FXML
     private MenuItem mnFileClose;
 
-
+    ////////////// CONTROLLERS
     private int counter = 0;
     private List<Path> pathsOnDemandList;
     private String nameOfStartPath = "d:\\";
@@ -122,74 +123,82 @@ public class Controller {
 
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-
-                // getting List of elements in selected MyTreeItem if it consists of them
+                tvLeft.setShowRoot(false);
                 selectedTreeItem = (MyTreeItem) newValue; // for outbound methods using
                 parentOfSelectedTreeItem = (MyTreeItem) selectedTreeItem.getParent(); //....
+                if (selectedTreeItem.getValue() != null) {
+                    // getting List of elements in selected MyTreeItem if it consists of them
 
-                // getting variables for internal use
-                MyTreeItem selectedItem = (MyTreeItem) newValue;
-                Path p = (Path) selectedItem.getValue();
-                selectedItem.setYetVisited(true);
-                selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
+                    // getting variables for internal use
 
-                Thread fillingItemThread = new Thread(new Runnable() {
-                    /**
-                     * Run method in Listener
-                     */
-                    @Override
-                    public void run() {
-                        // progress indicator init
-                        try {
+                    MyTreeItem selectedItem = (MyTreeItem) newValue;
+                    Path p = (Path) selectedItem.getValue();
+                    selectedItem.setYetVisited(true);
+                    selectedItem.setGraphic(new ImageView(new Image("icoes\\refresh.gif")));
+
+                    Thread fillingItemThread = new Thread(new Runnable() {
+                        /**
+                         * Run method in Listener
+                         */
+                        @Override
+                        public void run() {
+                            // progress indicator init
+                            try {
 //                            progressIndicator.setVisible(true); // set indicator visible for two seconds
-                            Task task = taskWorker(200);
-                            progressIndicator.progressProperty().bind(task.progressProperty());
+                                Task task = taskWorker(200);
 
-                            Thread threadProgressIndicator = new Thread(task); // fork separate thread
-                            threadProgressIndicator.start();
-                            Thread.sleep(1000);
-                            new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
+
+                                progressIndicator.progressProperty().bind(task.progressProperty());
+
+                                Thread threadProgressIndicator = new Thread(task); // fork separate thread
+                                threadProgressIndicator.start();
+                                Thread.sleep(1000);
+                                new FulFillIcoByType(selectedItem).filInTheIconInMyTreeItem();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    fillingItemThread.start(); // start progress indicator thread
+
+                    List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
+
+                    // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
+                    if (Files.isDirectory(p)) {
+
+                        // Populating subMyTreeItems List in "p" - selected Directory
+                        List<MyTreeItem> subItemsList = null;
+                        try {
+                            subItemsList = new ItemPopulator(selectedItem).populate();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
+                        // setting list of MyTreeItems to root Item
+                        selectedItem.getChildren().addAll(subItemsList);
+
+                        // populate list of sub MyTreeItems's paths
+                        for (MyTreeItem mt :
+                                subItemsList) {
+                            pathListOfMyTreeItemsInListener.add((Path) mt.getValue());
+                        }
+
+                        // setting sub MyTreeItems in selected parent Paths onto right TableView
+                        tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
+                        // refreshing tableView
+                        tableView.refresh();
+
+                        // else if path is a file creating list of one single element and pass it in table view
+                    } else {
+                        pathListOfMyTreeItemsInListener.add(((Path) selectedItem.getValue()));
+                        tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
+
+                        // refreshing tableView
+                        tableView.refresh();
                     }
-                });
-                fillingItemThread.start(); // start progress indicator thread
-
-                List<Path> pathListOfMyTreeItemsInListener = new ArrayList<>();
-
-                // if we have a list of MyTreeItems handled it but if "p" is one single file handled it too
-                if (Files.isDirectory(p)) {
-
-                    // Populating subMyTreeItems List in "p" - selected Directory
-                    List<MyTreeItem> subItemsList = null;
-                    try {
-                        subItemsList = new ItemPopulator(selectedItem).populate();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    // setting list of MyTreeItems to root Item
-                    selectedItem.getChildren().addAll(subItemsList);
-
-                    // populate list of sub MyTreeItems's paths
-                    for (MyTreeItem mt :
-                            subItemsList) {
-                        pathListOfMyTreeItemsInListener.add((Path) mt.getValue());
-                    }
-
-                    // setting sub MyTreeItems in selected parent Paths onto right TableView
-                    tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
-                    // refreshing tableView
-                    tableView.refresh();
-
-                    // else if path is a file creating list of one single element and pass it in table view
                 } else {
-                    pathListOfMyTreeItemsInListener.add(((Path) selectedItem.getValue()));
-                    tableView.setItems(FXCollections.observableArrayList(pathListOfMyTreeItemsInListener));
-
-                    // refreshing tableView
-                    tableView.refresh();
+                    rootItem.getChildren().remove((MyTreeItem) newValue);
+//                    rootItem.
                 }
             }
 
@@ -252,7 +261,7 @@ public class Controller {
 
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Make new folder dialog");
-        addDialogStage.initModality(Modality.APPLICATION_MODAL);
+        addDialogStage.initModality(Modality.WINDOW_MODAL);
         addDialogStage.setScene(addDialogScene);
         addDialogStage.show();
     }
@@ -299,6 +308,8 @@ public class Controller {
         }
     }
 
+    ////////
+
     /**
      * Show about description of this programm invoke by Menu Help -> About
      *
@@ -319,7 +330,6 @@ public class Controller {
 
     }
 
-    ////////
 
     /**
      * Invoke rename method to rename selected MyTreeItem element in TreeView and relevant path in file system
@@ -329,30 +339,71 @@ public class Controller {
      * @throws IOException
      */
     public void renameFileInSample(ActionEvent actionEvent) throws IOException {
-// !!!!!!!!!!
-       Scene renameDialogScene = new Scene((new FXMLLoader(getClass().getResource("RenameCustom.fxml"))).load()); //  java.lang.IllegalArgumentException
+        Scene renameDialogScene;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
 
-        Stage renameDialogStage = new Stage();
+
+// Rename interface realize
+        RenameController controller = new RenameController() {
+            @Override
+            public void initialize() {
+                oldName = ((selectedTreeItem).getValue()).toString();
+                txtRenameFld.setText(oldName);
+                oldSelectedPath = (Path) (selectedTreeItem).getValue();
+            }
+
+            /**
+             *
+             * @param actionEvent
+             */
+            @Override
+            public void renameFile(ActionEvent actionEvent) {
+                newName = txtRenameFld.getText();
+                FileSystem fs = FileSystems.getDefault();
+                Path newPath = fs.getPath(newName);
+
+                try {
+                    Files.copy(oldSelectedPath, (Paths.get(newName)));
+                    Files.delete(oldSelectedPath);
+                    parentOfSelectedTreeItem.getChildren().remove(selectedTreeItem);
+                    parentOfSelectedTreeItem.getChildren().add(new MyTreeItem(newPath));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Hello World!");
+                alert.setHeaderText("Info");
+                alert.setContentText("You had renamed file - " + oldName + " into -  " + newName + " !");
+                alert.initModality(Modality.WINDOW_MODAL);
+                alert.showAndWait();
+
+                Stage stage = (Stage) okRenameParent.getScene().getWindow();
+                stage.close();
+            }
+
+            /**
+             *
+             * @param actionEvent
+             */
+            @Override
+            public void cancelRename(ActionEvent actionEvent) {
+
+                Stage stage = (Stage) cancelRenameButton.getScene().getWindow();
+                stage.close();
+            }
+        };
+
+
+        loader.setController(controller);
+        renameDialogScene = loader.load();
         renameDialogStage.setScene(renameDialogScene);
         renameDialogStage.setTitle("Rename file dialog");
-        renameDialogStage.initModality(Modality.APPLICATION_MODAL);
+        renameDialogStage.initModality(Modality.WINDOW_MODAL);
         renameDialogStage.show();
+
     }
 
-    /**
-     * @param actionEvent
-     * @throws IOException
-     */
-    public void renameFile(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) okRenameButton.getScene().getWindow();
-        stage.close();
-    }
-///////
-
-    public void cancelRename(ActionEvent actionEvent) {
-        Stage stage = (Stage) cancelRenameButton.getScene().getWindow();
-        stage.close();
-    }
 
     /**
      * Mouse Single onClick event handler in table view (right side in application).
