@@ -20,9 +20,9 @@ import static sample.Controller.selectedTreeItem;
  * Created by mercenery on 21.07.2017.
  */
 public interface RenameController {
+     void RenameController();
 
-
-     void initialize() ;
+//     void initialize() ;
 //        oldName = (((MyTreeItem) selectedTreeItem).getValue()).toString();
 //        txtRenameFld.setText(oldName);
 //        oldSelectedPath = (Path) (selectedTreeItem).getValue();

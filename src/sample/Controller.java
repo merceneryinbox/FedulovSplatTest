@@ -31,7 +31,10 @@ import javafx.util.Callback;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,7 +52,6 @@ public class Controller {
     public TextField txtRenameFld;
     @FXML
     public Button cancelRenameButton;
-    Stage renameDialogStage = new Stage();
     ////////////
     @FXML
     private MenuItem mnHelpAbout;
@@ -339,70 +341,56 @@ public class Controller {
      * @throws IOException
      */
     public void renameFileInSample(ActionEvent actionEvent) throws IOException {
-        Scene renameDialogScene;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
+        oldName = ((selectedTreeItem).getValue()).toString();
+        txtRenameFld.setText(oldName);
 
-// Rename interface realize
-        RenameController renameController = new RenameController() {
-            @Override
-            public void initialize() {
-                oldName = ((selectedTreeItem).getValue()).toString();
-                txtRenameFld.setText(oldName);
-                oldSelectedPath = (Path) (selectedTreeItem).getValue();
-            }
-
-            /**
-             *
-             * @param actionEvent
-             */
-            @Override
-            public void renameFile(ActionEvent actionEvent) {
-                newName = txtRenameFld.getText();
-                FileSystem fs = FileSystems.getDefault();
-                Path newPath = fs.getPath(newName);
-
-                try {
-                    Files.copy(oldSelectedPath, (Paths.get(newName)));
-                    Files.delete(oldSelectedPath);
-                    parentOfSelectedTreeItem.getChildren().remove(selectedTreeItem);
-                    parentOfSelectedTreeItem.getChildren().add(new MyTreeItem(newPath));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Hello World!");
-                alert.setHeaderText("Info");
-                alert.setContentText("You had renamed file - " + oldName + " into -  " + newName + " !");
-                alert.initModality(Modality.WINDOW_MODAL);
-                alert.showAndWait();
-
-                Stage stage = (Stage) okRenameParent.getScene().getWindow();
-                stage.close();
-            }
-
-            /**
-             *
-             * @param actionEvent
-             */
-            @Override
-            public void cancelRename(ActionEvent actionEvent) {
-
-                Stage stage = (Stage) cancelRenameButton.getScene().getWindow();
-                stage.close();
-            }
-        };
-
-
-        renameDialogScene = loader.load();
-        loader.setController(renameController);
-        renameDialogStage.setScene(renameDialogScene);
+        FXMLLoader renameLoader = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
+        Stage renameDialogStage = new Stage();
         renameDialogStage.setTitle("Rename file dialog");
         renameDialogStage.initModality(Modality.WINDOW_MODAL);
+        renameDialogStage.hide();
+        Scene renameDialogScene = renameLoader.load();
+        renameDialogStage.setScene(renameDialogScene);
         renameDialogStage.show();
-
     }
 
+    /**
+     * @param actionEvent
+     */
+    public void renameFile(ActionEvent actionEvent) {
+        oldSelectedPath = (Path) (selectedTreeItem).getValue();
+        newName = txtRenameFld.getText();
+        FileSystem fs = FileSystems.getDefault();
+        Path newPath = fs.getPath(newName);
+
+        try {
+            Files.copy(oldSelectedPath, newPath);
+            Files.delete(oldSelectedPath);
+            parentOfSelectedTreeItem.getChildren().remove(selectedTreeItem);
+            parentOfSelectedTreeItem.getChildren().add(new MyTreeItem(newPath));
+
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Hello World!");
+            alert.setHeaderText("Info");
+            alert.setContentText("You had renamed file - " + oldName + " into -  " + newName + " !");
+            alert.initModality(Modality.WINDOW_MODAL);
+            alert.showAndWait();
+
+            Stage stage = (Stage) okRenameParent.getScene().getWindow();
+            stage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @param actionEvent
+     */
+    public void cancelRename(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelRenameButton.getScene().getWindow();
+        stage.close();
+    }
 
     /**
      * Mouse Single onClick event handler in table view (right side in application).
@@ -466,6 +454,4 @@ public class Controller {
         }
         return counter;
     }
-
-
 }
