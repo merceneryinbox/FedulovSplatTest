@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/sample/RenameDialog/AlertDialog.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/sample/RenameDialog/AlertDialogRenameFile.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/sample/RenameDialog/AlertDialog_en.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/sample/RenameDialog/AlertDialog_fr.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/testFX/sample/RenameDialog/RenameDialog.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/RenameController.java" afterPath="$PROJECT_DIR$/src/sample/RenameController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,15 +86,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-884">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="209" column="63" lean-forward="false" selection-start-line="209" selection-start-column="63" selection-end-line="209" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-                <element signature="class#9564:9943" expanded="false" />
+                <element signature="e#8121#8700#0" expanded="true" />
+                <element signature="e#8699#8700#0" expanded="true" />
                 <element signature="docComment;method#makeFolder#0;class#Controller#0" expanded="false" />
                 <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
                 <element signature="docComment;method#openFolder#0;class#Controller#0" expanded="false" />
@@ -110,9 +105,11 @@
                 <element signature="docComment;method#showAbout#0;class#Controller#0" expanded="false" />
                 <element signature="method#showAbout#0;class#Controller#0" expanded="false" />
                 <element signature="docComment;method#renameFileInSample#0;class#Controller#0" expanded="false" />
+                <element signature="method#renameFileInSample#0;class#Controller#0" expanded="false" />
                 <element signature="docComment;method#openFileDeskInTable#0;class#Controller#0" expanded="false" />
                 <element signature="method#openFileDeskInTable#0;class#Controller#0" expanded="false" />
                 <element signature="method#openInDeskByClick#0;class#Controller#0" expanded="false" />
+                <element signature="method#showJavaDoc#0;class#Controller#0" expanded="false" />
                 <element signature="docComment;method#pathRecursiveDelete#0;class#Controller#0" expanded="false" />
                 <element signature="method#pathRecursiveDelete#0;class#Controller#0" expanded="false" />
                 <element signature="method#counting#0;class#Controller#0" expanded="false" />
@@ -134,7 +131,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RenameController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RenameController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/RenameController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
@@ -267,8 +264,8 @@
         <option value="$PROJECT_DIR$/src/sample/RenameDialog.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/RenameCustom.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/RenameController.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
@@ -1014,12 +1011,12 @@
       <workItem from="1500082150991" duration="42679000" />
       <workItem from="1500315248611" duration="42598000" />
       <workItem from="1500408473904" duration="14392000" />
-      <workItem from="1500466215087" duration="49735000" />
+      <workItem from="1500466215087" duration="50651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248331000" />
+    <option name="totallyTimeSpent" value="249247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -1120,25 +1117,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>367</line>
+          <line>365</line>
           <properties />
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>368</line>
+          <line>366</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>369</line>
+          <line>367</line>
           <properties />
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>371</line>
+          <line>369</line>
           <properties />
           <option name="timeStamp" value="259" />
         </line-breakpoint>
@@ -1174,7 +1171,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>365</line>
+          <line>363</line>
           <properties />
           <option name="timeStamp" value="303" />
         </line-breakpoint>
@@ -1216,55 +1213,55 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>342</line>
+          <line>340</line>
           <properties />
           <option name="timeStamp" value="352" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>334</line>
+          <line>332</line>
           <properties />
           <option name="timeStamp" value="374" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>338</line>
+          <line>336</line>
           <properties />
           <option name="timeStamp" value="378" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>336</line>
+          <line>334</line>
           <properties />
           <option name="timeStamp" value="379" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>339</line>
+          <line>337</line>
           <properties />
           <option name="timeStamp" value="380" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>340</line>
+          <line>338</line>
           <properties />
           <option name="timeStamp" value="382" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>335</line>
+          <line>333</line>
           <properties />
           <option name="timeStamp" value="383" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>337</line>
+          <line>335</line>
           <properties />
           <option name="timeStamp" value="384" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>364</line>
+          <line>362</line>
           <properties class="sample.Controller" method="showJavaDoc">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1272,7 +1269,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>314</line>
+          <line>312</line>
           <properties class="sample.Controller" method="showAbout">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1679,14 +1676,24 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/RenameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-884">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="142">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="class#9564:9943" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="209" column="63" lean-forward="false" selection-start-line="209" selection-start-column="63" selection-end-line="209" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8121#8700#0" expanded="true" />
+            <element signature="e#8699#8700#0" expanded="true" />
             <element signature="docComment;method#makeFolder#0;class#Controller#0" expanded="false" />
             <element signature="method#makeFolder#0;class#Controller#0" expanded="false" />
             <element signature="docComment;method#openFolder#0;class#Controller#0" expanded="false" />
@@ -1697,22 +1704,14 @@
             <element signature="docComment;method#showAbout#0;class#Controller#0" expanded="false" />
             <element signature="method#showAbout#0;class#Controller#0" expanded="false" />
             <element signature="docComment;method#renameFileInSample#0;class#Controller#0" expanded="false" />
+            <element signature="method#renameFileInSample#0;class#Controller#0" expanded="false" />
             <element signature="docComment;method#openFileDeskInTable#0;class#Controller#0" expanded="false" />
             <element signature="method#openFileDeskInTable#0;class#Controller#0" expanded="false" />
             <element signature="method#openInDeskByClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#showJavaDoc#0;class#Controller#0" expanded="false" />
             <element signature="docComment;method#pathRecursiveDelete#0;class#Controller#0" expanded="false" />
             <element signature="method#pathRecursiveDelete#0;class#Controller#0" expanded="false" />
             <element signature="method#counting#0;class#Controller#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/RenameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

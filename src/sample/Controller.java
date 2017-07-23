@@ -303,8 +303,6 @@ public class Controller {
         }
     }
 
-    ////////
-
     /**
      * Show about description of this programm invoke by Menu Help -> About
      *
