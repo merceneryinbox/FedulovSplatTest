@@ -342,9 +342,8 @@ public class Controller {
         Scene renameDialogScene;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
 
-
 // Rename interface realize
-        RenameController controller = new RenameController() {
+        RenameController renameController = new RenameController() {
             @Override
             public void initialize() {
                 oldName = ((selectedTreeItem).getValue()).toString();
@@ -395,8 +394,8 @@ public class Controller {
         };
 
 
-        loader.setController(controller);
         renameDialogScene = loader.load();
+        loader.setController(renameController);
         renameDialogStage.setScene(renameDialogScene);
         renameDialogStage.setTitle("Rename file dialog");
         renameDialogStage.initModality(Modality.WINDOW_MODAL);
