@@ -35,16 +35,6 @@ public class RenameController {
     public void initialize() throws IOException {
         oldName = ((Controller.selectedTreeItem).getValue()).toString();
         txtRenameFld.setText(oldName);
-
-        FXMLLoader renameLoader = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
-        Parent renameParentLayer = renameLoader.load();
-        Stage renameDialogStage = new Stage();
-        renameDialogStage.setResizable(false);
-        renameDialogStage.setTitle("Rename file dialog");
-        renameDialogStage.initModality(Modality.WINDOW_MODAL);
-        Scene renameDialogScene = new Scene(renameParentLayer);
-        renameDialogStage.setScene(renameDialogScene);
-        renameDialogStage.show();
     }
 
 
