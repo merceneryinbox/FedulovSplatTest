@@ -1,59 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<SplitPane minHeight="400.0" minWidth="600.0" prefHeight="497.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" minHeight="400.0" minWidth="600.0" prefHeight="497.0" prefWidth="720.0"
+           xmlns="http://javafx.com/javafx/8" fx:controller="sample.Controller">
     <items>
-        <AnchorPane fx:id="ancPaneLeft" minHeight="345.0" minWidth="598.0" prefHeight="345.0" prefWidth="598.0" SplitPane.resizableWithParent="false">
+        <AnchorPane fx:id="ancPaneLeft" minHeight="345.0" minWidth="598.0" prefHeight="345.0" prefWidth="598.0"
+                    SplitPane.resizableWithParent="false">
             <children>
-                <SplitPane dividerPositions="0.2701342281879195" minHeight="300.0" minWidth="598.0" prefHeight="398.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <SplitPane dividerPositions="0.2701342281879195" minHeight="300.0" minWidth="598.0" prefHeight="398.0"
+                           prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                         <AnchorPane minHeight="347.0" minWidth="158.0" prefHeight="347.0" prefWidth="158.0">
                             <children>
-                                <TreeView fx:id="tvLeft" editable="true" layoutY="25.0" minHeight="300.0" minWidth="200.0" onMouseClicked="#openInDeskByClick" prefHeight="370.0" prefWidth="300.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-                           <contextMenu>
-                              <ContextMenu fx:id="cntxMnOnTable">
-                                <items>
-                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                </items>
-                              </ContextMenu>
-                           </contextMenu></TreeView>
-                        <ProgressIndicator fx:id="progressIndicator" layoutX="62.0" layoutY="213.0" prefHeight="67.0" prefWidth="67.0" progress="0.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="213.0" />
+                                <TreeView fx:id="tvLeft" editable="true" layoutY="25.0" minHeight="300.0"
+                                          minWidth="200.0" onMouseClicked="#openInDeskByClick" prefHeight="370.0"
+                                          prefWidth="300.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0"
+                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                                    <contextMenu>
+                                        <ContextMenu fx:id="cntxMnOnTable">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Unspecified Action"/>
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </TreeView>
+                                <ProgressIndicator fx:id="progressIndicator" layoutX="62.0" layoutY="213.0"
+                                                   prefHeight="67.0" prefWidth="67.0" progress="0.0"
+                                                   AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="213.0"/>
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="300.0" minWidth="350.0" prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="tableView" editable="true" layoutY="24.0" minHeight="370.0" minWidth="432.0" onMouseClicked="#openFileDeskInTable" prefHeight="370.0" prefWidth="432.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+                                <TableView fx:id="tableView" editable="true" layoutY="24.0" minHeight="370.0"
+                                           minWidth="432.0" onMouseClicked="#openFileDeskInTable" prefHeight="370.0"
+                                           prefWidth="432.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="2.0"
+                                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="24.0">
                                     <columns>
-                                        <TableColumn fx:id="tableViewName" editable="false" maxWidth="400.0" minWidth="180.0" prefWidth="200.0" text="File Name" />
-                                        <TableColumn fx:id="tableViewSize" editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="70.0" text="Size kB" />
-                                        <TableColumn fx:id="tableViewDate" editable="false" maxWidth="150.0" minWidth="115.0" prefWidth="150.0" text="Last modified" />
+                                        <TableColumn fx:id="tableViewName" editable="false" maxWidth="400.0"
+                                                     minWidth="180.0" prefWidth="200.0" text="File Name"/>
+                                        <TableColumn fx:id="tableViewSize" editable="false" maxWidth="80.0"
+                                                     minWidth="60.0" prefWidth="70.0" text="Size kB"/>
+                                        <TableColumn fx:id="tableViewDate" editable="false" maxWidth="150.0"
+                                                     minWidth="115.0" prefWidth="150.0" text="Last modified"/>
                                     </columns>
                                 </TableView>
                             </children>
                         </AnchorPane>
                     </items>
                 </SplitPane>
-                <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0"
+                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem fx:id="mnFileNew" mnemonicParsing="false" onAction="#makeFolder" text="New" />
-                                <MenuItem fx:id="mnFileOpen" mnemonicParsing="false" onAction="#openFolder" text="Open" />
-                                <MenuItem fx:id="mnFileClose" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+                                <MenuItem fx:id="mnFileNew" mnemonicParsing="false" onAction="#makeFolder" text="New"/>
+                                <MenuItem fx:id="mnFileOpen" mnemonicParsing="false" onAction="#openFolder"
+                                          text="Open"/>
+                                <MenuItem fx:id="mnFileClose" mnemonicParsing="false" onAction="#closeWindow"
+                                          text="Close"/>
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="mnEditDelete" mnemonicParsing="false" onAction="#deleteFile" text="Delete" />
-                                <MenuItem fx:id="mnEditDeleteRename" mnemonicParsing="false" onAction="#renameFileInSample" text="Rename" />
+                                <MenuItem fx:id="mnEditDelete" mnemonicParsing="false" onAction="#deleteFile"
+                                          text="Delete"/>
+                                <MenuItem fx:id="mnEditDeleteRename" mnemonicParsing="false"
+                                          onAction="#renameFileInSample" text="Rename"/>
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem fx:id="mnHelpAbout" mnemonicParsing="false" onAction="#showAbout" text="About" />
+                                <MenuItem fx:id="mnHelpAbout" mnemonicParsing="false" onAction="#showAbout"
+                                          text="About"/>
                             </items>
                         </Menu>
                     </menus>

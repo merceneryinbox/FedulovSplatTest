@@ -44,25 +44,17 @@ import java.util.List;
 public class Controller {
 
     public static MyTreeItem selectedTreeItem;
-    private static MyTreeItem parentOfSelectedTreeItem;
-    /////////////// RENAME DIALOG
-    @FXML
-    public Button okRenameParent;
-    @FXML
-    public TextField txtRenameFld;
-    @FXML
-    public Button cancelRenameButton;
-    ////////////
+    public static MyTreeItem parentOfSelectedTreeItem;
+
+    //Menu -> Help -> About
     @FXML
     private MenuItem mnHelpAbout;
-    //////////////
+
+    ////////////// ProgressIndicator
     @FXML
     private ProgressIndicator progressIndicator;
-    private String oldName;
-    private String newName;
-    private Path oldSelectedPath;
 
-    /////////////////TREEVIEW
+    //////////////TREEVIEW
     @FXML
     private TreeView tvLeft;
     @FXML
@@ -73,6 +65,7 @@ public class Controller {
     private TableColumn<Path, String> tableViewSize;
     @FXML
     private TableColumn<Path, String> tableViewDate;
+
     ///////// MAIN MENU VARS
     @FXML
     private MenuBar menuBar;
@@ -83,7 +76,7 @@ public class Controller {
     @FXML
     private MenuItem mnFileClose;
 
-    ////////////// CONTROLLERS
+    ////////CONTROLLERS vars
     private int counter = 0;
     private List<Path> pathsOnDemandList;
     private String nameOfStartPath = "d:\\";
@@ -325,13 +318,11 @@ public class Controller {
         Stage aboutDialogStage = new Stage();
         aboutDialogStage.setResizable(false);
         aboutDialogStage.setTitle("Description program working");
-        aboutDialogStage.initModality(Modality.APPLICATION_MODAL);
+        aboutDialogStage.initModality(Modality.WINDOW_MODAL);
         Scene aboutScene = new Scene(addDialogRoot);
         aboutDialogStage.setScene(aboutScene);
         aboutDialogStage.show();
-
     }
-
 
     /**
      * Invoke rename method to rename selected MyTreeItem element in TreeView and relevant path in file system
@@ -341,55 +332,15 @@ public class Controller {
      * @throws IOException
      */
     public void renameFileInSample(ActionEvent actionEvent) throws IOException {
-        oldName = ((selectedTreeItem).getValue()).toString();
-        txtRenameFld.setText(oldName);
-
         FXMLLoader renameLoader = new FXMLLoader(getClass().getResource("RenameCustom.fxml"));
+        Parent renameParentLayer = renameLoader.load();
         Stage renameDialogStage = new Stage();
+        renameDialogStage.setResizable(false);
         renameDialogStage.setTitle("Rename file dialog");
         renameDialogStage.initModality(Modality.WINDOW_MODAL);
-        renameDialogStage.hide();
-        Scene renameDialogScene = renameLoader.load();
+        Scene renameDialogScene = new Scene(renameParentLayer);
         renameDialogStage.setScene(renameDialogScene);
         renameDialogStage.show();
-    }
-
-    /**
-     * @param actionEvent
-     */
-    public void renameFile(ActionEvent actionEvent) {
-        oldSelectedPath = (Path) (selectedTreeItem).getValue();
-        newName = txtRenameFld.getText();
-        FileSystem fs = FileSystems.getDefault();
-        Path newPath = fs.getPath(newName);
-
-        try {
-            Files.copy(oldSelectedPath, newPath);
-            Files.delete(oldSelectedPath);
-            parentOfSelectedTreeItem.getChildren().remove(selectedTreeItem);
-            parentOfSelectedTreeItem.getChildren().add(new MyTreeItem(newPath));
-
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Hello World!");
-            alert.setHeaderText("Info");
-            alert.setContentText("You had renamed file - " + oldName + " into -  " + newName + " !");
-            alert.initModality(Modality.WINDOW_MODAL);
-            alert.showAndWait();
-
-            Stage stage = (Stage) okRenameParent.getScene().getWindow();
-            stage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @param actionEvent
-     */
-    public void cancelRename(ActionEvent actionEvent) {
-        Stage stage = (Stage) cancelRenameButton.getScene().getWindow();
-        stage.close();
     }
 
     /**
